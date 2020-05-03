@@ -1,0 +1,15 @@
+{
+	"username": "KhaozBot",
+	"avatar_url": "http://puu.sh/Ayb07/4881ecf48f.jpg",
+	"embeds": [{
+		"author": {
+			"name": "@{{ChannelName}}"
+		},
+		"title": "{{ChannelName}}'s Twitch Link :wink:",
+		"url": "{{ChannelUrl}}",
+		"image": {
+			"url": "{{StreamPreview}}"
+		},
+		"description": "This guy just started streaming **{{Game}}**, come watch!"
+	}]
+}

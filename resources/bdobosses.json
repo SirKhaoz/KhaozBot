@@ -1,0 +1,112 @@
+{
+ "Kzarka": {
+  "name": "Kzarka",
+  "type": "boss",
+  "message": null,
+  "delay": 15,
+  "nexttime":null,
+  "times": [{"time":"Mon 05:00AM","cron":"0 00 5 * * 1","announce":false}, {"time":"Mon 03:15PM","cron":"0 15 15 * * 1","announce":true}, {"time":"Mon 10:00PM","cron":"0 00 22 * * 1","announce":true},
+    {"time":"Tue 02:00AM","cron":"0 00 2 * * 2","announce":false}, {"time":"Tue 03:15PM","cron":"0 15 15 * * 2","announce":true}, {"time":"Tue 10:00PM","cron":"0 00 22 * * 2","announce":true},
+    {"time":"Wed 05:15PM","cron":"0 15 17 * * 3","announce":true}, {"time":"Thu 03:15PM","cron":"0 15 15 * * 4","announce":true}, {"time":"Thu 10:00PM","cron":"0 00 22 * * 4","announce":true},
+    {"time":"Fri 09:00AM","cron":"0 00 9 * * 5","announce":true}, {"time":"Fri 05:15PM","cron":"0 15 17 * * 5","announce":true}, {"time":"Sat 12:00PM","cron":"0 00 12 * * 6","announce":true},
+    {"time":"Sat 03:15PM","cron":"0 15 15 * * 6","announce":true}, {"time":"Sun 12:00PM","cron":"0 00 12 * * 0","announce":true}, {"time":"Sun 07:00PM","cron":"0 00 19 * * 0","announce":true}]
+ },
+ "Nouver": {
+  "name": "Nouver",
+  "type": "boss",
+  "message": null,
+  "delay": 15,
+  "nexttime":null,
+  "times": [{"time":"Mon 02:00AM","cron":"0 00 2 * * 1","announce":false}, {"time":"Mon 03:15PM","cron":"0 15 15 * * 1","announce":true}, {"time":"Tue 12:00PM","cron":"0 00 12 * * 2","announce":true},
+    {"time":"Wed 02:00AM","cron":"0 00 2 * * 3","announce":false}, {"time":"Thu 05:00 AM","cron":"0 00 5 * * 4","announce":false}, {"time":"Thu 05:15PM","cron":"0 15 17 * * 4","announce":true},
+    {"time":"Fri 05:00AM","cron":"0 00 5 * * 5","announce":false}, {"time":"Fri 07:00PM","cron":"0 00 19 * * 5","announce":true}, {"time":"Sat 09:00AM","cron":"0 00 9 * * 6","announce":true},
+    {"time":"Sat 10:00PM","cron":"0 00 22 * * 6","announce":true}, {"time":"Sun 05:00AM","cron":"0 00 5 * * 0","announce":false}, {"time":"Sun 05:15PM","cron":"0 15 17 * * 0","announce":true}]
+ },
+ "Kutum": {
+  "name": "Kutum",
+  "type": "boss",
+  "message": null,
+  "delay": 15,
+  "nexttime":null,
+  "times": [{"time":"Mon 05:15PM","cron":"0 15 17 * * 1","announce":true}, {"time":"Tue 09:00AM","cron":"0 00 9 * * 2","announce":true}, {"time":"Tue 07:00PM","cron":"0 00 19 * * 2","announce":true},
+    {"time":"Wed 05:00AM","cron":"0 00 5 * * 3","announce":false}, {"time":"Wed 05:15PM","cron":"0 15 17 * * 3","announce":true}, {"time":"Thu 09:00AM","cron":"0 00 9 * * 4","announce":true},
+    {"time":"Thu 07:00PM","cron":"0 00 19 * * 4","announce":true}, {"time":"Fri 02:00AM","cron":"0 00 2 * * 5","announce":false}, {"time":"Fri 12:00PM","cron":"0 00 12 * * 5","announce":true},
+    {"time":"Sat 02:00AM","cron":"0 00 2 * * 6","announce":false}, {"time":"Sat 03:15PM","cron":"0 15 15 * * 6","announce":true}, {"time":"Sun 02:00AM","cron":"0 00 2 * * 0","announce":false},
+    {"time":"Sun 05:15PM","cron":"0 15 17 * * 0","announce":true}, {"time":"Sun 10:00PM","cron":"0 00 22 * * 0","announce":true}]
+ },
+ "Karanda": {
+  "name": "Karanda",
+  "type": "boss",
+  "message": null,
+  "delay": 15,
+  "nexttime":null,
+  "times": [{"time":"Mon 05:15PM","cron":"0 15 17 * * 1","announce":true}, {"time":"Mon 07:00PM","cron":"0 00 19 * * 1","announce":true}, {"time":"Tue 05:15PM","cron":"0 15 17 * * 2","announce":true},
+    {"time":"Wed 12:00PM","cron":"0 00 12 * * 3","announce":true}, {"time":"Wed 07:00PM","cron":"0 00 19 * * 3","announce":true}, {"time":"Thu 02:00AM","cron":"0 00 2 * * 4","announce":false},
+    {"time":"Thu 03:15PM","cron":"0 15 15 * * 4","announce":true}, {"time":"Fri 05:15PM","cron":"0 15 17 * * 5","announce":true}, {"time":"Fri 10:00PM","cron":"0 00 22 * * 5","announce":true},
+    {"time":"Sat 05:00AM","cron":"0 00 5 * * 6","announce":false}, {"time":"Sat 05:15:PM","cron":"0 15 17 * * 6","announce":true}, {"time":"Sun 12:00PM","cron":"0 00 12 * * 0","announce":true}]
+ },
+ "Vell": {
+  "name": "Vell",
+  "type": "boss",
+  "message": "warning (which is 30 mins in advance) in",
+  "delay": 45,
+  "nexttime":null,
+  "times": [{"time":"Mon 09:00AM","cron":"0 00 9 * * 1","announce":true}]
+ },
+ "Garmoth": {
+  "name": "Garmoth",
+  "type": "boss",
+  "message": null,
+  "delay": 15,
+  "nexttime":null,
+  "times": [{"time":"Mon 12:00PM","cron":"0 00 12 * * 1","announce":true}, {"time":"Wed 03:15PM","cron":"0 15 15 * * 3","announce":true}, {"time":"Fri 03:15PM","cron":"0 15 15 * * 5","announce":true}]
+ },
+ "Offin": {
+  "name": "Offin",
+  "type": "boss",
+  "message": null,
+  "delay": 15,
+  "nexttime":null,
+  "times": [{"time":"Tue 05:00AM","cron":"0 00 5 * * 2","announce":false}, {"time":"Thu 12:00PM","cron":"0 00 12 * * 4","announce":true}, {"time":"Sat 07:00PM","cron":"0 00 19 * * 6","announce":true}]
+ },
+ "Server Maintenance - Early Warning": {
+  "name": "Maintenance",
+  "type": "maint",
+  "message": "happens today (for four hours), in",
+  "delay": 600,
+  "nexttime":null,
+  "times": [{"time":"Wed 10:00AM","cron":"0 0 20 * * 3","announce":true}]
+ },
+ "Server Maintenance - Late Warning": {
+  "name": "Maintenance",
+  "type": "maint",
+  "message": "happens soon (for four hours), in",
+  "delay": 60,
+  "nexttime":null,
+  "times": [{"time":"Wed 07:00PM","cron":"0 0 20 * * 3","announce":true}]
+ },
+ "Quint & Muraka": {
+  "name": "Quint & Muraka",
+  "type": "boss",
+  "message": null,
+  "delay": 15,
+  "nexttime":null,
+  "times": [{"time":"Thu 04:15PM","cron":"0 15 16 * * 4","announce":true}, {"time":"Sun 09:00AM","cron":"0 00 9 * * 0","announce":true}]
+  },
+  "Agris Fever - Point Gain": {
+   "name": "Agris Fever",
+   "type": "event",
+   "message": "happens in",
+   "delay": 30,
+   "nexttime":null,
+   "times": [{"time":"Daily 06:00PM","cron":"0 00 18 * * *","announce":false}]
+  },
+  "Attendance Reward": {
+   "name": "Attendance",
+   "type": "event",
+   "message": "are available in",
+   "delay": 30,
+   "nexttime":null,
+   "times": [{"time":"Daily 12:00PM","cron":"0 00 12 * * *","announce":false}]
+  }
+}

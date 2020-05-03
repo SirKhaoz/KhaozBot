@@ -1,0 +1,495 @@
+{
+   "209104845859323906": {
+      "guildID": "209104845859323906",
+      "defaultchannel": "668052797811589140",
+      "adminchannel": "637380710897942528",
+      "twitchchannel": "452621841190748170",
+      "touretteschannel": "209104846362509312",
+      "botchannel": "637383895360339989",
+      "leaguechannel": "667995980251136010",
+      "bdochannel": "637381573238325259",
+      "movecommands": true,
+      "twitchChannels": [
+         {
+            "name": "sirkhaoz",
+            "timestamp": 1564394446577,
+            "online": false
+         },
+         {
+            "name": "viklok",
+            "timestamp": 1567029462871,
+            "online": false
+         },
+         {
+            "name": "jadedwrath",
+            "timestamp": 1555634124882,
+            "online": false
+         }
+      ],
+      "summonerNames": [],
+      "commandlocked": [],
+      "autopurge": true,
+      "autopurgechannels": [
+         "637380710897942528",
+         "532773245792026704",
+         "562102455673028618",
+         "329152874707681280",
+         "667993124534222849",
+         "463999413426323469"
+      ],
+      "queue": [],
+      "botVolume": 0.2,
+      "repeat": false,
+      "joinmessage": "Welcome to the server {{{user}}}... check out <#667993124534222849> to get started.",
+      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
+      "musicchannel": "637383763776765972",
+      "afkchannel": "222497152054591491",
+      "rolemessage": {
+         "messageid": "668200116015857724",
+         "channelid": "667993124534222849",
+         "messagebody": "**Role Assign Channel**\nHi @everyone, please react to this message to receive the correct role(s) for the desired additional channel(s).\nThis is now how you self-assign roles. (NOTE: !sub [role] is now depreciated.)\n\n**Gaming Channels:**\n🔴 - Battle-Royals\n🪓 - BDO\n🏳️‍🌈 - Classic WoW\n🔫 - Destiny 2\n🐱 - ESO\n🧂 - LoL\n💯 - OSRS\n💫 - POE\n🦄 - Pokemon\n🏞️ - Retail WoW\n🤖 - RS3\n☢️ - Rust\n🌲 - Terraria\n💢 - TF2\n\n**Other Channels:**\n🎶 - Music Channels\n🐲 - BDO Boss Pings\n👫 - LoL Flex Pings",
+         "roles": [
+            [
+               "🪓",
+               "452067064723537950"
+            ],
+            [
+               "🏳️‍🌈",
+               "491039382485336073"
+            ],
+            [
+               "🔫",
+               "630264941814743050"
+            ],
+            [
+               "🐱",
+               "610382345467330570"
+            ],
+            [
+               "🧂",
+               "452066758497533952"
+            ],
+            [
+               "💯",
+               "452066962336514058"
+            ],
+            [
+               "🦄",
+               "528816576397574145"
+            ],
+            [
+               "🏞️",
+               "668302474062462987"
+            ],
+            [
+               "🤖",
+               "595157010144690178"
+            ],
+            [
+               "☢️",
+               "569283197112811560"
+            ],
+            [
+               "💢",
+               "566168567054336011"
+            ],
+            [
+               "🎶",
+               "470794624483721226"
+            ],
+            [
+               "💫",
+               "672553454346174464"
+            ],
+            [
+               "🌲",
+               "679021646522351637"
+            ],
+            [
+               "🔴",
+               "692977899279482880"
+            ],
+            [
+               "🐲",
+               "704318069660581919"
+            ],
+            [
+               "👫",
+               "698080947806928947"
+            ]
+         ],
+         "pmadd": "{{{emoji}}}  you can now access **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}",
+         "pmremove": "{{{emoji}}}  you have removed yourself from **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}"
+      },
+      "welcomemessage": {
+         "messageid": "330166627658235904",
+         "channelid": "329152874707681280",
+         "messagebody": "<:thelads:448589522356142090> **Welcome to The Big Sad, we hope you cry a lot, and enjoy your stay** <:thelads:448589522356142090>\n\n\n1️⃣ Respect <@!177621692191997952> because otherwise he'll curse your RNG forever (rip <@!78306944179245056>'s rng)\n2️⃣ Memes are to be fresh, edgy and as spicy as possible (have a 5 minute conversation with @Dusty Nigga if you want to define 'spicy')\n4️⃣ \"Just don't be a cunt\" -@Henri 2k18\n5️⃣ Where is rule 3️⃣? Ffs @Depressed Avocado give it back\n6️⃣ To the discretion of the server owners channels, messages, links and data may be purged at any such time.\n\n\n**Seeing The Channels**\nTo avoid spam you won't be able to see all the channels on the server.\nThere is a channel specifically for role assignment (<#667993124534222849>).\n\n\nYou probably want to mute the channels <#637383895360339989>  and <#637383763776765972> unless you're into getting spammed.\n<#452621841190748170> and the gaming channels have updates periodically posted by the bot.\n\n\n**Errors and Suggestions**\nIf anyone has any problems, notices the bot offline, errors, issues anything related - including twitch notifications etc please @ me or send me a DM.\n\n\nTo access the server after reading this, please react to this message with 🐓.",
+         "anyemoji": false,
+         "emojis": [
+            "🐓"
+         ],
+         "roles": [
+            "667936357762596874"
+         ],
+         "pmadd": "{{{emoji}}}  **Welcome to {{{servername}}}!**  {{{emoji}}}\nYou can now see all the default channels, thank you for reading the rules.\nPlease use the <#667993124534222849> channel to assign more channel specific roles.",
+         "pmremove": "{{{emoji}}} **You have removed yourself from {{{servername}}}.**  {{{emoji}}}\nYou can no longer see any of the default channels. Please react again to gain the role back.\""
+      },
+      "bdobossping": {
+         "sendpings": true,
+         "roles": [
+            "704318069660581919"
+         ],
+         "bosstimerchannel": "705195517453402193",
+         "sendschedule": true,
+         "lastmessage": {
+            "id": "705362620680634379",
+            "channel": "705195517453402193"
+         },
+         "bosses": {
+            "kzarka": true,
+            "nouver": true,
+            "kutum": true,
+            "karanda": true,
+            "vell": true,
+            "garmoth": true,
+            "offin": true,
+            "quint": true,
+            "muraka": true
+         }
+      }
+   },
+   "375195759622225932": {
+      "guildID": "375195759622225932",
+      "defaultchannel": "375195759622225934",
+      "adminchannel": "375195759622225934",
+      "twitchchannel": "454208730955907073",
+      "touretteschannel": "399178026639949825",
+      "botchannel": "399178026639949825",
+      "leaguechannel": "399178026639949825",
+      "bdochannel": "399178026639949825",
+      "movecommands": true,
+      "twitchChannels": [
+         {
+            "name": "nightingale_nz",
+            "timestamp": 1568201537538,
+            "online": false
+         },
+         {
+            "name": "sirkhaoz",
+            "timestamp": 1564394446573,
+            "online": false
+         }
+      ],
+      "summonerNames": [],
+      "commandlocked": [],
+      "autopurge": false,
+      "autopurgechannels": [],
+      "queue": [],
+      "botVolume": "0.3",
+      "repeat": false,
+      "joinmessage": "Henri welcomes you to NIIGA, {{{user}}}",
+      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
+      "musicchannel": "376641030117916674",
+      "afkchannel": "375214550380969985",
+      "rolemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "roles": [],
+         "pmadd": "{{{emoji}}}  you can now access **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}",
+         "pmremove": "{{{emoji}}}  you have removed yourself from **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}"
+      },
+      "welcomemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "anyemoji": false,
+         "emojis": [],
+         "roles": [],
+         "pmadd": "{{{emoji}}}  **Welcome to {{{servername}}}!**  {{{emoji}}}",
+         "pmremove": "{{{emoji}}} **You have removed yourself from {{{servername}}}.**  {{{emoji}}}"
+      },
+      "bdobossping": {
+         "sendpings": false,
+         "roles": [],
+         "bosstimerchannel": 375195759622225900,
+         "sendschedule": false,
+         "lastmessage": {
+            "id": null,
+            "channel": null
+         },
+         "bosses": {
+            "kzarka": true,
+            "nouver": true,
+            "kutum": true,
+            "karanda": true,
+            "vell": true,
+            "garmoth": true,
+            "offin": true,
+            "quint": true,
+            "muraka": true
+         }
+      }
+   },
+   "568929512092336129": {
+      "guildID": "568929512092336129",
+      "defaultchannel": "568947602440192010",
+      "twitchchannel": "568929839604695040",
+      "touretteschannel": null,
+      "afkchannel": null,
+      "botchannel": "570408469782331392",
+      "musicchannel": "568929839604695040",
+      "leaguechannel": "568929839604695040",
+      "bdochannel": "568929839604695040",
+      "movecommands": true,
+      "twitchChannels": [],
+      "summonerNames": [],
+      "commandlocked": [],
+      "queue": [],
+      "botVolume": "0.3",
+      "repeat": false,
+      "autopurge": false,
+      "autopurgechannels": [],
+      "joinmessage": "- Welcome to the Faceless Server {{{user}}} , hang tight and do not log out of discord until you have been assigned your applicant role.  If you do though, you can always use the link to join back.",
+      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
+      "adminchannel": "570420148478017538",
+      "rolemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "roles": [],
+         "pmadd": "{{{emoji}}}  you can now access **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}",
+         "pmremove": "{{{emoji}}}  you have removed yourself from **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}"
+      },
+      "welcomemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "anyemoji": false,
+         "emojis": [],
+         "roles": [],
+         "pmadd": "{{{emoji}}}  **Welcome to {{{servername}}}!**  {{{emoji}}}",
+         "pmremove": "{{{emoji}}} **You have removed yourself from {{{servername}}}.**  {{{emoji}}}"
+      },
+      "bdobossping": {
+         "sendpings": false,
+         "roles": [],
+         "bosstimerchannel": 568947602440192000,
+         "sendschedule": false,
+         "lastmessage": {
+            "id": null,
+            "channel": null
+         },
+         "bosses": {
+            "kzarka": true,
+            "nouver": true,
+            "kutum": true,
+            "karanda": true,
+            "vell": true,
+            "garmoth": true,
+            "offin": true,
+            "quint": true,
+            "muraka": true
+         }
+      }
+   },
+   "570566768469344259": {
+      "guildID": "570566768469344259",
+      "defaultchannel": "570566768469344265",
+      "twitchchannel": "575268677910528008",
+      "touretteschannel": "575127466033676298",
+      "afkchannel": "575729735359922176",
+      "botchannel": "575268677910528008",
+      "musicchannel": "575268677910528008",
+      "leaguechannel": "575268677910528008",
+      "bdochannel": "575268677910528008",
+      "movecommands": false,
+      "twitchChannels": [],
+      "summonerNames": [],
+      "commandlocked": [],
+      "autopurge": false,
+      "autopurgechannels": [],
+      "queue": [],
+      "botVolume": "0.3",
+      "repeat": false,
+      "joinmessage": "Welcome, {{{user}}}! Please **read** and **follow** the instructions above so a Marquis  or Other Alliance Leader can get a role sorted for you.",
+      "leavemessage": "{{{user}}} has left the server.",
+      "welcomechannel": "570666941820305409",
+      "leavechannel": "570566768469344265",
+      "adminchannel": "580189893926453248",
+      "rolemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "roles": [],
+         "pmadd": "{{{emoji}}}  you can now access **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}",
+         "pmremove": "{{{emoji}}}  you have removed yourself from **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}"
+      },
+      "welcomemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "anyemoji": false,
+         "emojis": [],
+         "roles": [],
+         "pmadd": "{{{emoji}}}  **Welcome to {{{servername}}}!**  {{{emoji}}}",
+         "pmremove": "{{{emoji}}} **You have removed yourself from {{{servername}}}.**  {{{emoji}}}"
+      },
+      "bdobossping": {
+         "sendpings": false,
+         "roles": [],
+         "bosstimerchannel": 570566768469344260,
+         "sendschedule": false,
+         "lastmessage": {
+            "id": null,
+            "channel": null
+         },
+         "bosses": {
+            "kzarka": true,
+            "nouver": true,
+            "kutum": true,
+            "karanda": true,
+            "vell": true,
+            "garmoth": true,
+            "offin": true,
+            "quint": true,
+            "muraka": true
+         }
+      }
+   },
+   "444260557319569439": {
+      "guildID": "444260557319569439",
+      "defaultchannel": "444260557319569441",
+      "welcomechannel": "444260557319569441",
+      "leavechannel": "444260557319569441",
+      "twitchchannel": "705562842220331028",
+      "touretteschannel": "447995783921401866",
+      "afkchannel": "444261118945525770",
+      "botchannel": "705562842220331028",
+      "musicchannel": "499475865332350986",
+      "leaguechannel": "705562842220331028",
+      "bdochannel": "706063605396930590",
+      "bdobossping": {
+         "sendpings": true,
+         "roles": [
+            "705565207640014939"
+         ],
+         "bosstimerchannel": "705562842220331028",
+         "sendschedule": true,
+         "lastmessage": {
+            "id": "705564407169679431",
+            "channel": "705562842220331028"
+         },
+         "bosses": {
+            "kzarka": true,
+            "nouver": true,
+            "kutum": true,
+            "karanda": true,
+            "vell": true,
+            "garmoth": true,
+            "offin": true,
+            "quint": true,
+            "muraka": true
+         }
+      },
+      "movecommands": true,
+      "twitchChannels": [
+         {
+            "name": "larryfish",
+            "timestamp": 0,
+            "online": false
+         }
+      ],
+      "summonerNames": [],
+      "commandlocked": [],
+      "autopurge": false,
+      "autopurgechannels": [],
+      "queue": [],
+      "botVolume": "0.3",
+      "repeat": false,
+      "joinmessage": "Welcome to the server... {{{user}}}",
+      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
+      "rolemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": null,
+         "pmremove": null,
+         "roles": []
+      },
+      "welcomemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": "{{{emoji}}}  Welcome to {{{servername}}}!  {{{emoji}}}",
+         "pmremove": "{{{emoji}}}  you have left {{{servername}}}.  {{{emoji}}}",
+         "anyemoji": false,
+         "emojis": [],
+         "roles": []
+      }
+   },
+   "701134183736541195": {
+      "guildID": "701134183736541195",
+      "defaultchannel": "701134183736541198",
+      "welcomechannel": "701134183736541198",
+      "leavechannel": "701134183736541198",
+      "twitchchannel": "701134183736541198",
+      "touretteschannel": "703201535512936508",
+      "afkchannel": "703201535512936508",
+      "botchannel": "705565332072562725",
+      "musicchannel": "701134183736541198",
+      "leaguechannel": "701134183736541198",
+      "bdochannel": "705565332072562725",
+      "bdobossping": {
+         "sendpings": true,
+         "roles": [],
+         "bosstimerchannel": "705565332072562725",
+         "sendschedule": false,
+         "lastmessage": {
+            "id": null,
+            "channel": null
+         },
+         "bosses": {
+            "kzarka": true,
+            "nouver": true,
+            "kutum": true,
+            "karanda": true,
+            "vell": true,
+            "garmoth": true,
+            "offin": true,
+            "quint": true,
+            "muraka": true
+         }
+      },
+      "movecommands": false,
+      "twitchChannels": [],
+      "summonerNames": [],
+      "commandlocked": [],
+      "autopurge": false,
+      "autopurgechannels": [],
+      "queue": [],
+      "botVolume": "0.3",
+      "repeat": false,
+      "joinmessage": "Welcome to the server... {{{user}}}",
+      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
+      "rolemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": null,
+         "pmremove": null,
+         "roles": []
+      },
+      "welcomemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": "{{{emoji}}}  Welcome to {{{servername}}}!  {{{emoji}}}",
+         "pmremove": "{{{emoji}}}  you have left {{{servername}}}.  {{{emoji}}}",
+         "anyemoji": false,
+         "emojis": [],
+         "roles": []
+      }
+   }
+}

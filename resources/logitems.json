@@ -1,0 +1,194 @@
+{
+   "heve helm": {
+      "name": "heve helm",
+      "price": 280000,
+      "taxable": true,
+      "lastedit": 1547557784159
+   },
+   "grunil helmet": {
+      "name": "grunil helmet",
+      "price": 320000,
+      "taxable": true,
+      "lastedit": 1547553461481
+   },
+   "grunil shoes": {
+      "name": "grunil shoes",
+      "price": 280000,
+      "taxable": true,
+      "lastedit": 1547554198504
+   },
+   "scarla necklace": {
+      "name": "scarla necklace",
+      "price": 1400000,
+      "taxable": true,
+      "lastedit": 1547555286578
+   },
+   "heve helm+5": {
+      "name": "heve helm+5",
+      "price": 1329999,
+      "taxable": true,
+      "lastedit": 1547555719929
+   },
+   "heve helm+8": {
+      "name": "heve helm+8",
+      "price": 2589998,
+      "taxable": true,
+      "lastedit": 1547555884736
+   },
+   "heve helm+10": {
+      "name": "heve helm+10",
+      "price": 5109997,
+      "taxable": true,
+      "lastedit": 1547555957309
+   },
+   "luck helm+5": {
+      "name": "luck helm+5",
+      "price": 1152251,
+      "taxable": true,
+      "lastedit": 1547556008929
+   },
+   "luck helm": {
+      "name": "luck helm",
+      "price": 102251,
+      "taxable": true,
+      "lastedit": 1547556112010
+   },
+   "kite shield": {
+      "name": "kite shield",
+      "price": 36746,
+      "taxable": true,
+      "lastedit": 1547556181291
+   },
+   "black stone (armor)": {
+      "name": "black stone (armor)",
+      "price": 210000,
+      "taxable": true,
+      "lastedit": 1547556346547
+   },
+   "black stone (weapon)": {
+      "name": "black stone (weapon)",
+      "price": 300000,
+      "taxable": true,
+      "lastedit": 1547556551904
+   },
+   "cadry token": {
+      "name": "cadry token",
+      "price": 1200,
+      "taxable": false,
+      "lastedit": 1547556873218
+   },
+   "cadrys token": {
+      "name": "cadrys token",
+      "price": 1200,
+      "taxable": false,
+      "lastedit": 1547556892419
+   },
+   "cadry's token": {
+      "name": "cadry's token",
+      "price": 1200,
+      "taxable": false,
+      "lastedit": 1547556918344
+   },
+   "ancient scroll": {
+      "name": "ancient scroll",
+      "price": 2250000,
+      "taxable": true,
+      "lastedit": 1547557084279
+   },
+   "sturdy rock fragment": {
+      "name": "sturdy rock fragment",
+      "price": 160,
+      "taxable": false,
+      "lastedit": 1547557163128
+   },
+   "rusty iron piece": {
+      "name": "rusty iron piece",
+      "price": 200,
+      "taxable": false,
+      "lastedit": 1547557189166
+   },
+   "ancient guardian seal": {
+      "name": "ancient guardian seal",
+      "price": 10003206,
+      "taxable": true,
+      "lastedit": 1547557390141
+   },
+   "seleth axe": {
+      "name": "seleth axe",
+      "price": 58000,
+      "taxable": true,
+      "lastedit": 1547557633723
+   },
+   "kalis axe": {
+      "name": "kalis axe",
+      "price": 104000,
+      "taxable": true,
+      "lastedit": 1547557662417
+   },
+   "bares axe": {
+      "name": "bares axe",
+      "price": 67000,
+      "taxable": true,
+      "lastedit": 1547557741808
+   },
+   "yuria axe": {
+      "name": "yuria axe",
+      "price": 67000,
+      "taxable": true,
+      "lastedit": 1547557872611
+   },
+   "crescent ring": {
+      "name": "crescent ring",
+      "price": 50000000,
+      "taxable": true,
+      "lastedit": 1547558098229
+   },
+   "yuria axe+1": {
+      "name": "yuria axe+1",
+      "price": 363000,
+      "taxable": true,
+      "lastedit": 1547558291370
+   },
+   "asulas earing": {
+      "name": "asulas earing",
+      "price": 150000,
+      "taxable": false,
+      "lastedit": 1547558357922
+   },
+   "silver": {
+      "name": "silver",
+      "price": 1,
+      "taxable": false,
+      "lastedit": 1547558480006
+   },
+   "axion shield": {
+      "name": "axion shield",
+      "price": 33000,
+      "taxable": true,
+      "lastedit": 1547558730806
+   },
+   "oros ornamental knot+13": {
+      "name": "oros ornamental knot+13",
+      "price": 12035431,
+      "taxable": true,
+      "lastedit": 1547558976150
+   },
+   "might helm": {
+      "name": "might helm",
+      "price": 107223,
+      "taxable": true,
+      "lastedit": 1547559028653
+   },
+   "agerian helm": {
+      "name": "agerian helm",
+      "price": 80000,
+      "taxable": true,
+      "lastedit": 1547559052371
+   },
+   "forbidden book": {
+      "name": "forbidden book",
+      "price": 2184549,
+      "taxable": true,
+      "lastedit": 1547559091809
+   }
+}

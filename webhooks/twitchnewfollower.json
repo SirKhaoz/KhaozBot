@@ -1,0 +1,12 @@
+{
+	"username": "KhaozBot",
+	"avatar_url": "http://puu.sh/Ayb07/4881ecf48f.jpg",
+	"embeds": [{
+		"author": {
+			"name": "@SirKhaoz"
+		},
+		"title": "SirKhaoz's Twitch Link :wink:",
+		"url": "https://www.twitch.tv/sirkhaoz",
+		"description": "This fella just followed us! Thanks big {{FollowerName}}!"
+	}]
+}
