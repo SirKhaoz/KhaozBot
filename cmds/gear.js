@@ -40,10 +40,16 @@ module.exports.run = async (bot, message, args) => {
 		download(message.attachments.first().url,`./resources/bdogear/${message.author.id}_gearpic_0${upfiletype}`, function (err, fd){
 			if(!bot.bdoplayers[message.author.id]){
 				bot.bdoplayers[message.author.id] = {"gearpic": `./resources/bdogear/${message.author.id}_gearpic_0${upfiletype}`};
-				message.reply("I have added you and your gear to the database.");
+				message.reply(`I have added you and your gear to the database:`, {files: [{
+					attachment: `${bot.bdoplayers[message.author.id].gearpic}`,
+					name: `${bot.bdoplayers[message.author.id].gearpic}`
+				}]});
 			}else{
-				message.reply("I have updated your gear for you.");
 				bot.bdoplayers[message.author.id].gearpic = `./resources/bdogear/${message.author.id}_gearpic_0${upfiletype}`
+				message.reply(`I have updated your gear for you:`, {files: [{
+					attachment: `${bot.bdoplayers[message.author.id].gearpic}`,
+					name: `${bot.bdoplayers[message.author.id].gearpic}`
+				}]});
 			}
 		});
 	}else if(!attstatus[0] && message.attachments.size > 0){
