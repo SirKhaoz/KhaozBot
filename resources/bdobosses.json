@@ -48,7 +48,7 @@
  "Vell": {
   "name": "Vell",
   "type": "boss",
-  "message": "warning (which is 30 mins in advance) in",
+  "message": "spawning (warning in 15 mins) in",
   "delay": 45,
   "nexttime":null,
   "times": [{"time":"Mon 09:00AM","cron":"0 00 9 * * 1","announce":true}]

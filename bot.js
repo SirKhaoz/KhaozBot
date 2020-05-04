@@ -380,7 +380,7 @@ bot.on("ready", async () => {
 			//1209600000 = 2 weeks in MS
 			if((Date.now() - message.timestamp) > 1209600000){
 				console.log("Message ID: " + message.id + " is within timestamp paramater.")
-				console.log("Trying to delete message ID: " + message.id);
+				console.log("Trying to delete message ID: " + message.id, "On guild ID: " + message.guildid);
 				let guild = bot.guilds.cache.get(message.guildid);
 				if(guild){
 					let channel = guild.channels.cache.get(message.channelid);
