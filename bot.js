@@ -519,7 +519,7 @@ bot.on("guildMemberRemove", async (member) => {
 
 			let adminChannel = member.guild.channels.cache.filter(c=>c.id == bot.guildSettings[member.guild.id].adminchannel).first();
 			if(adminChannel) adminChannel.send(kickEmbed);
-			leavetype += ", by: " + entry.executor
+			leavetype += `, by: <@${entry.executor}>`
 		}
 
 		let channel;
