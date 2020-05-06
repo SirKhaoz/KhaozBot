@@ -22,9 +22,9 @@ module.exports.run = async (bot, message, args) => {
 		bot.guildSettings[message.guild.id].defaultchannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the default channel, for this server.`);
 	}
-	else if(args[0] == "welcomechannel"){
+	else if(args[0] == "joinchannel"){
 		bot.guildSettings[message.guild.id].welcomechannel = message.channel.id;
-		message.reply(`I have set ${message.channel} as the welcome message channel, for this server.`);
+		message.reply(`I have set ${message.channel} as the join message channel, for this server.`);
 	}
 	else if(args[0] == "leavechannel"){
 		bot.guildSettings[message.guild.id].leavechannel = message.channel.id;
@@ -256,25 +256,30 @@ module.exports.run = async (bot, message, args) => {
 		}
 	}
 	else if(args[0] == "help"){
-		message.channel.send('**!set help** - displays this list.\n\
-**!set defaultchannel** - sets the default channel of the server, to send and recieve primary bot updates such as join/leave messages.\n\
-**!set welcomechannel** - sets the welcome channel of the server, if you need to specifically split join/leave messages.\n\
-**!set leavechannel** - sets the leave channel of the server, if you need to specifically split join/leave messages.\n\
+		message.channel.send(`**!set help** - displays this list.\n\
+**!set defaultchannel** - sets the default/general channel of the server, to send and recieve primary bot updates such as join/leave messages.\n\
+**!set joinchannel** - sets the join message channel of the server, if you need to specifically split join/leave messages.\n\
+**!set leavechannel** - sets the leave message channel of the server, if you need to specifically split join/leave messages.\n\
 **!set twitchchannel** - sets the twitch channel of the server, to send updates and notifications for twitch streams to.\n\
 **!set leaguechannel** - sets the league of legends channel of the server, to send updates and notifications for league and live games to.\n\
-**!set touretteschannel** - sets the tourettes channel of the server, to lock the \'Tourettes\' role to only use.\n\
-**!set botchannel** - sets the bot channel of the server, to move commands that user\'s enter, to this channel.');
+**!set inthebinchannel** - sets the 'in the bin' channel of the server, to lock the \'In The Bin\' role to only use.\n\
+**!set botchannel** - sets the bot channel of the server, to move commands that user\'s enter, to this channel.`);
 
-		message.channel.send('**!set musicchannel** - sets the music channel of the server, to move commands that user\'s enter (music bot related), to this channel.\n\
+		message.channel.send(`**!set musicchannel** - sets the music channel of the server, to move commands that user\'s enter (music bot related), to this channel.\n\
 **!set adminchannel** - sets the admin/events channel of the server, to display admin/event notifications, to this channel.\n\
 **!set leaguechannel** - sets the league channel of the server, to paste automatic game updates, news etc, to this channel.\n\
-**!set bdochannel** - sets the bdo channel of the server, to post news, timers and bdo related commands, to this channel.\n\
-**!set movecommands** - sets the move commands boolean true or false, whether or not the commands should be moved to the bot channel or not.\n\
+**!set bdochannel** - sets the BDO channel of the server, to post news, timers and BDO related commands, to this channel.\n\
+**!set bdobossping** - sets the BDO boss pings to true/false.\n\
+**!set bdobosstimerchannel** - sets the BDO boss timer channel where the boss/events and pings get sent.\n\
+**!set bdosendschedule** - sets the sending & updating of the BDO event schedule to true/false.\n\
+**!set bdobosspingrole** - adds or removes a role to be pinged for boss/event timers.`)
+
+		message.channel.send(`**!set movecommands** - sets the move commands boolean true or false, whether or not the commands should be moved to the bot channel or not.\n\
 **!set autopurge** - sets the automatic deletion of messages after 14 days to true or false.\n\
 **!set autopurgechannel** - sets the specific channel to be exempt or not from autopurge. ie. for welcome channel.\n\
 **!set joinmessage** - sets the welcome message for the server. Use {{{user}}} for the person joining/leaving.\n\
 **!set leavemessage** - sets the leav message for the server. Use {{{user}}} for the person joining/leaving.\n\
-**!set setupmessage** - command to setup join and role assign messages. Type the command without parameters for additional help.');
+**!set setupmessage** - command to setup join and role assign messages. Type the command without parameters for additional help.`);
 	}
 	else{
 		let msg = await message.reply("Please enter a valid setting to change. Type !set help to see a list of settings.");
