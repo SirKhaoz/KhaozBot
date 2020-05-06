@@ -25,7 +25,10 @@ https://incendar.com/bdoalchemyrecipes.php`, {files: [{
 			name: `Basic Alchemy Ingredients.png`
 		}]
 	});
-	} else if (args[0] == "todo") {
+} else if (args[0] == "knowledge") {
+	message.channel.send(`**Useful BDO Knowledge-Locator Tool:**\n\
+https://grumpygreen.cricket/old-site/bdo-knowledge-locator.html`)
+} else if (args[0] == "todo") {
 		message.reply("Bro **str8 up**, get off my back, I'm working on this.")
 	}  else {
 		let msg = await message.reply(`Please enter a valid option. The options to chose from are:\n\
@@ -33,6 +36,7 @@ https://incendar.com/bdoalchemyrecipes.php`, {files: [{
 2. Fonts\n\
 3. Bartalibooks\n\
 4. Alchbase\n\
+5. Knowledge\n\
 5. TODO`);
 		msg.delete({timeout:14000});
 		return;
