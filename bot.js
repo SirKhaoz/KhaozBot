@@ -65,9 +65,13 @@ function sendbossping(boss, time, timetoboss, alertmessage){
 	bot.guilds.cache.forEach(g => {
 		if(!bot.guildSettings[g.id].bdobossping.sendpings) return;
 		try{
-			let channel = g.channels.cache.filter(c => c.id == bot.guildSettings[g.id].bdobossping.bosstimerchannel).first();
-			if (!channel) channel = g.channels.cache.filter(c => c.id == bot.guildSettings[g.id].defaultchannel).first();
-			if (!channel) return console.log("NO CHANNEL FOUND FOR BDO BOSS PING IN " + g.name + " for:", boss + " " + time);
+			let channel = g.channels.cache.get(bot.guildSettings[g.id].bdobossping.bosstimerchannel);
+			if (!channel) {
+				bot.guildSettings[g.id].bdobossping.bosstimerchannel = null;
+				bot.guildSettings[g.id].bdobossping.sendpings = false;
+				channel = g.channels.cache.get(bot.guildSettings[g.id].defaultchannel);
+				return channel.send("No channel set for bosstimers/prings. Use ''!set bdobosstimerchannel' in the desired channel.")
+			}
 
 			let roles = "";
 			bot.guildSettings[g.id].bdobossping.roles.forEach(r => {
