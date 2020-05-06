@@ -17,8 +17,8 @@ module.exports.run = async (bot, message, args) => {
 	});
 
 	let msg = await message.reply(" changed the activity, just for you x");
-	msg.delete(14000);
-	
+	msg.delete({timeout:14000});
+
 }
 
 module.exports.help = {
