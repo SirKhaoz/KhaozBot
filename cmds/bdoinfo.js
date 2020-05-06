@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args) => {
 			attachment: `./resources/bdoinfo/fontchange.png`,
 			name: `Font Change Information.png`
 		}]});
-	} else if (args[0] == "bartaliguide") {
+	} else if (args[0] == "bartalibooks") {
 		message.channel.send(`**Bartali book adventure guides:**\n\
 **Part 1-10:** <https://docs.google.com/document/d/1_36I1ah01yVhZ59jUDx45SnkdhNrnp3ey6DgDeqV5Vg/edit>\n\
 **Part 11-15:** <https://docs.google.com/document/d/1sxN87MfNPDJEhtOg5qyfd5pcRi_yjheyiYLhanWCRFU/edit>`)
@@ -31,7 +31,7 @@ https://incendar.com/bdoalchemyrecipes.php`, {files: [{
 		let msg = await message.reply(`Please enter a valid option. The options to chose from are:\n\
 1. Brackets\n\
 2. Fonts\n\
-3. Bartaliguide\n\
+3. Bartalibooks\n\
 4. Alchbase\n\
 5. TODO`);
 		msg.delete({timeout:14000});
