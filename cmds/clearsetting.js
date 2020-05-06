@@ -79,11 +79,27 @@ module.exports.run = async (bot, message, args) => {
 		bot.guildSettings[message.guild.id].bdobossping.bosstimerchannel = null; //This one is okay on null as there is a check.
 		message.reply(`I have cleared the auto updating BDO boss timer channel, for this server.`);
 	}
+	else if(args[0] == "bdosendschedule"){
+		bot.guildSettings[message.guild.id].bdobossping.sendschedule = false;
+		message.reply(`I have set sending the BDO boss schedule to: ${bot.guildSettings[message.guild.id].bdobossping.sendschedule}.`);
+	}
+	else if(args[0] == "bdobosspingrole"){
+		bot.guildSettings[message.guild.id].bdobossping.roles = [];
+		message.reply(`I have cleared the BDO boss ping roles. There are currently no roles.`);
+	}
 	else if(args[0] == "movecommands"){
 		bot.guildSettings[message.guild.id].movecommands = false;
 		message.reply(`I have set the movement of bot commands to the bot channel to: ${bot.guildSettings[message.guild.id].movecommands}.`);
 	}
-	else if(args[0] == "welcomemessage"){
+	else if(args[0] == "autopurge"){
+		bot.guildSettings[message.guild.id].autopurge = false;
+		message.reply(`I have set the automatic deletion of messages after 14 days to: ${bot.guildSettings[message.guild.id].autopurge}.`);
+	}
+	else if(args[0] == "autopurgechannel"){
+		bot.guildSettings[message.guild.id].autopurgechannels = [];
+			message.reply(`I have cleared all auto-purge exempt channels. All **new** messages in any channel will be purged after 14 days.`);
+	}
+	else if(args[0] == "joinmessage"){
 		bot.guildSettings[message.guild.id].welcomemessage = "Welcome to the server... {{{user}}}";
 		message.reply(`I have set the welcome message back to the default of: ${bot.guildSettings[message.guild.id].welcomemessage}.`);
 	}
