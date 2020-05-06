@@ -643,7 +643,7 @@ bot.on("message", async message => {
 		let index = indexOfObjectByName(bot.guildSettings[message.guild.id].commandlocked, message.author.id);
 		if(index != -1){
 			let msg = await message.reply(`You have been command locked, please see an admin.`);
-			msg.delete(3000).catch(err => console.error(err));
+			msg.delete({timeout:3000}).catch(err => console.error(err));
 			return;
 		}
 		if(bot.guildSettings[message.guild.id].movecommands){
