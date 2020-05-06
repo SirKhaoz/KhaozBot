@@ -19,13 +19,13 @@ module.exports.run = async (bot, message, args) => {
 		bot.guildSettings[message.guild.id].defaultchannel = txtchannelIDs[0];
 		message.reply(`I have cleared the default channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
 	}
-	else if(args[0] == "welcomechannel"){
+	else if(args[0] == "joinchannel"){
 		bot.guildSettings[message.guild.id].welcomechannel = txtchannelIDs[0];
-		message.reply(`I have cleared the welcome channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
+		message.reply(`I have cleared the join message channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
 	}
 	else if(args[0] == "leavechannel"){
 		bot.guildSettings[message.guild.id].leavechannel = txtchannelIDs[0];
-		message.reply(`I have cleared the leave channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
+		message.reply(`I have cleared the leave message channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
 	}
 	else if(args[0] == "twitchchannel"){
 		bot.guildSettings[message.guild.id].twitchchannel = txtchannelIDs[0];
