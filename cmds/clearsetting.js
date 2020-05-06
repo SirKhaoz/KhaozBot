@@ -1,14 +1,14 @@
 module.exports.run = async (bot, message, args) => {
 	if(!message.member.permissions.has("ADMINISTRATOR")) {
 		let msg = await message.reply("You do not have permission to do this.");
-		msg.delete(7000).catch(err => console.log(err));
+		msg.delete({timeout:7000}).catch(err => console.log(err));
 		return;
 	}
 
 	if(!args[0]){
 		//Reply letting the user know, then delete the message after 7 seconds.
 		let msg = await message.reply("Please enter a setting to clear.");
-		msg.delete(7000);
+		msg.delete({timeout:7000});
 		return;
 	}
 
@@ -71,6 +71,14 @@ module.exports.run = async (bot, message, args) => {
 		bot.guildSettings[message.guild.id].bdochannel = txtchannelIDs[0];
 		message.reply(`I have cleared the bdo channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
 	}
+	else if(args[0] == "bdobossping"){
+		bot.guildSettings[message.guild.id].bdobossping.sendpings = false;
+		message.reply(`I have set sending BDO boss warning pings to: ${bot.guildSettings[message.guild.id].bdobossping.sendpings}.`);
+	}
+	else if(args[0] == "bdobosstimerchannel"){
+		bot.guildSettings[message.guild.id].bdobossping.bosstimerchannel = null; //This one is okay on null as there is a check.
+		message.reply(`I have cleared the auto updating BDO boss timer channel, for this server.`);
+	}
 	else if(args[0] == "movecommands"){
 		bot.guildSettings[message.guild.id].movecommands = false;
 		message.reply(`I have set the movement of bot commands to the bot channel to: ${bot.guildSettings[message.guild.id].movecommands}.`);
@@ -112,7 +120,7 @@ module.exports.run = async (bot, message, args) => {
 				}
 			} else{
 				let msg = await message.reply("Please choose [message/pm/emoji/role/currentmessage] (as an additional argument).");
-				msg.delete(7000);
+				msg.delete({timeout:7000});
 				return;
 			}
 		} else if(args[1] == "role"){
@@ -140,18 +148,18 @@ module.exports.run = async (bot, message, args) => {
 				}
 			} else{
 				let msg = await message.reply("Please choose [message/pm/role/currentmessage] (as an additional argument).");
-				msg.delete(7000);
+				msg.delete({timeout:7000});
 				return;
 			}
 		} else{
 			let msg = await message.reply("Please choose either welcome or role with this command (as an additional argument).");
-			msg.delete(7000);
+			msg.delete({timeout:7000});
 			return;
 		}
 	}
 	else{
 		let msg = await message.channel.send("Please enter a valid setting to clear. Type '!set help' to see a list of settings.");
-		msg.delete(7000);
+		msg.delete({timeout:7000});
 		return;
 	}
 
