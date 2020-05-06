@@ -11,15 +11,15 @@ module.exports.run = async (bot, message, args) => {
 
 	if(!args[0]){
 		let msg = await message.reply(`Please specify a directory to restore from. Use !restore list to display a list of sub-directories.`);
-		msg.delete(7000).catch(err => console.log(err));
+		msg.delete({timeout:7000}).catch(err => console.log(err));
 		return;
 	} else if (args[0] == "list"){
-		let body = `**List of directories within ${dir} :**\n\n`; 
+		let body = `**List of directories within ${dir} :**\n\n`;
 		getDirectories(dir).forEach(d => {
 			body += ("-- " + d +"\n")
 		});
 		let msg = await message.reply(body);
-		msg.delete(30000).catch(err => console.log(err));
+		msg.delete({timeout:30000}).catch(err => console.log(err));
 		return;
 	} else if(getDirectories(dir).includes(args[0])){
 		fs.readdir(dir + args[0], (err, files) => {
@@ -30,7 +30,7 @@ module.exports.run = async (bot, message, args) => {
 		});//.then(message.reply(`All done. ${files.length} sucessfully restored.`));
 	} else {
 		let msg = await message.reply(`No such directory found in '${dir}'`);
-		msg.delete(7000).catch(err => console.log(err));
+		msg.delete({timeout:7000}).catch(err => console.log(err));
 		return;
 	}
 }
