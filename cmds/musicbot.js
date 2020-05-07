@@ -23,8 +23,7 @@ module.exports.run = async (bot, message, args) => {
 		bot.musicguilds[message.guild.id].voiceChannel = message.member.voice.channel;
 		playMusic(bot.guildSettings[message.guild.id].queue[0].id, message)
 		bot.musicguilds[message.guild.id].isPlaying = true;
-		message.reply(` now Playing **${bot.guildSettings[message.guild.id].queue[0].name}**`);
-		return;
+		return message.reply(` now Playing **${bot.guildSettings[message.guild.id].queue[0].name}**`);
 	} else if(!args[0]){
 		let msg = await message.reply("Nothing in queue, so please specify a search/video paramater.");
 		msg.delete({timeout: 7000}).catch(err => console.log(err));
