@@ -12,8 +12,6 @@ module.exports.run = async (bot, message, args) => {
 		.addField("User account was created at:", infouser.createdAt);
 
 	message.channel.send(embed);
-
-	return;
 }
 
 module.exports.help = {
