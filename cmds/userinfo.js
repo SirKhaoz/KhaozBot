@@ -1,15 +1,17 @@
 const Discord = module.require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
-	let embed = new Discord.RichEmbed()
-		.setAuthor(message.author.username)
-		.setDescription("This is the user's info!")
-		.setColor("#9B59B6")
-		.addField("Full Username", message.author.tag)
-		.addField("ID", message.author.id)
-		.addField("Created At", message.author.createdAt);
+	let infouser = (message.mentions.users.first() == null) ? message.author : message.mentions.users.first()
 
-	message.channel.send({embed: embed});
+	let embed = new Discord.MessageEmbed()
+		.setAuthor(infouser.username)
+		.setDescription("Showing the user's info ")
+		.setColor("#9B59B6")
+		.addField("Full Username:", infouser.tag)
+		.addField("ID:", infouser.id)
+		.addField("User account was created at:", infouser.createdAt);
+
+	message.channel.send(embed);
 
 	return;
 }
