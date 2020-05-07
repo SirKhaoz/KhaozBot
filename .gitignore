@@ -6,3 +6,4 @@ node_modules
 keys.json
 **/bdogear/*.*
 **/emojis/*.*
+savedmessages.json
