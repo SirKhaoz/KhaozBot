@@ -9,22 +9,21 @@ module.exports.run = async (bot, message, args) => {
 
 	if(bot.guildSettings[message.guild.id].queue.length == 0){
 		let msg = await message.reply("No songs playing, or in queue.");
-		msg.delete(7000);
+		msg.delete({timeout:7000});
 		return;
 	}
 
 	if(args[0] == "clear"){
 		if(args[1] && (/[^\d]/.test(args[1]) || args[1] > bot.guildSettings[message.guild.id].queue.length || args[1] < 2)){
-			let msg = await message.channel.send(`Please enter a valid number between 2-${bot.guildSettings[message.guild.id].queue.length}`);
-			msg.delete(7000);
+			let msg = await message.reply(`Please enter a valid number between 2-${bot.guildSettings[message.guild.id].queue.length}`);
+			msg.delete({timeout:7000});
 			return;
 		}else if(!args[1]){
 			bot.guildSettings[message.guild.id].queue.length = 1;
-			message.channel.send("Queue Cleared");
-			return;
+			return message.reply("Queue Cleared");
 		}
 		else{
-			message.channel.send(`Removed: ${args[1]}: ${bot.guildSettings[message.guild.id].queue[args[1]-1]}`);
+			message.reply(`Removed: ${args[1]}: ${bot.guildSettings[message.guild.id].queue[args[1]-1]}`);
 			bot.guildSettings[message.guild.id].queue.splice(args[1]-1,1);
 		}
 	}
