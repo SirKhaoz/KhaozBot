@@ -25,7 +25,7 @@ module.exports.run = async (bot, message, args) => {
 	try{
 		message.guild.member(toKick).kick(`${message.author} kicked with reason: ${kickReason}`);
 	} catch (e) {
-		message.reply(`ERROR, CONSOLE: ${e}\n<@78306944179245056>, check this out bro.`);
+		message.reply(`ERROR, CONSOLE.\n<@78306944179245056>, check this out bro.`);
 		console.log(e);
 	}
 }
