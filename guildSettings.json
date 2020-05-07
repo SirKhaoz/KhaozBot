@@ -38,7 +38,7 @@
          "463999413426323469"
       ],
       "queue": [],
-      "botVolume": 0.2,
+      "botVolume": 0.09,
       "repeat": false,
       "joinmessage": "Welcome to the server {{{user}}}... check out <#667993124534222849> to get started.",
       "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
@@ -446,70 +446,6 @@
          "sendpings": true,
          "roles": [],
          "bosstimerchannel": "705565332072562725",
-         "sendschedule": false,
-         "lastmessage": {
-            "id": null,
-            "channel": null
-         },
-         "bosses": {
-            "kzarka": true,
-            "nouver": true,
-            "kutum": true,
-            "karanda": true,
-            "vell": true,
-            "garmoth": true,
-            "offin": true,
-            "quint": true,
-            "muraka": true
-         }
-      },
-      "movecommands": false,
-      "twitchChannels": [],
-      "summonerNames": [],
-      "commandlocked": [],
-      "autopurge": false,
-      "autopurgechannels": [],
-      "queue": [],
-      "botVolume": "0.3",
-      "repeat": false,
-      "joinmessage": "Welcome to the server... {{{user}}}",
-      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
-      "rolemessage": {
-         "messageid": null,
-         "channelid": null,
-         "messagebody": null,
-         "pmadd": null,
-         "pmremove": null,
-         "roles": []
-      },
-      "welcomemessage": {
-         "messageid": null,
-         "channelid": null,
-         "messagebody": null,
-         "pmadd": "{{{emoji}}}  Welcome to {{{servername}}}!  {{{emoji}}}",
-         "pmremove": "{{{emoji}}}  you have left {{{servername}}}.  {{{emoji}}}",
-         "anyemoji": false,
-         "emojis": [],
-         "roles": []
-      }
-   },
-   "707747713000931328": {
-      "guildID": "707747713000931328",
-      "defaultchannel": "707747713000931332",
-      "welcomechannel": "707747713000931332",
-      "leavechannel": "707747713000931332",
-      "adminchannel": "707747713000931332",
-      "twitchchannel": "707747713000931332",
-      "touretteschannel": "707747713000931333",
-      "afkchannel": "707747713000931333",
-      "botchannel": "707747713000931332",
-      "musicchannel": "707747713000931332",
-      "leaguechannel": "707747713000931332",
-      "bdochannel": "707747713000931332",
-      "bdobossping": {
-         "sendpings": false,
-         "roles": [],
-         "bosstimerchannel": "707747713000931332",
          "sendschedule": false,
          "lastmessage": {
             "id": null,
