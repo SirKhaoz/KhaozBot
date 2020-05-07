@@ -42,6 +42,7 @@ module.exports.run = async (bot, message, args) => {
 		}
 		bot.guildSettings[message.guild.id].touretteschannel = voicechannelIDs[0];
 		message.reply(`I have cleared the 'inthebin' channel, for this server. It has defaulted back to: ${voicechannelIDs[0]}`);
+		//TODO delete role.
 	}
 	else if(args[0] == "afkchannel"){
 		if(voicechannelIDs[0] == null) {
