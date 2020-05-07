@@ -505,33 +505,33 @@ bot.on("guildMemberRemove", async (member) => {
 	try{
 		let leavetype = "Left";
 		let entry = await member.guild
-	    	.fetchAuditLogs({ type: "MEMBER_KICK" })
-	    	.then(audit => audit.entries.first());
+	    	.fetchAuditLogs({limit:5})
+	    	.then(audit => audit.entries.filter(a => a.target == member.user).first());
 
-		if(entry && (entry.target.id == member.id)){
-			leavetype = "Kicked";
+		if(entry && (entry.action == "MEMBER_KICK" || entry.action == "MEMBER_BAN_ADD")){
+			leavetype = (entry.action == "MEMBER_KICK") ? "Kicked" : "Banned";
 			let kickReason = entry.reason;
 			if (!kickReason || kickReason == "") kickReason = "No Reason Specified."
 
 			let kickEmbed = new Discord.MessageEmbed()
-				.setDescription("--- KICKED: ---")
-				.setColor("#ffff00")
-				.addField("Kicked user:", `${member} (${member.displayName}) with ID of ${member.id}`)
-				.addField("Kicked by:", `${entry.executor}`)
+				.setDescription(`--- ${kickReason.toUpperCase()}: ---`)
+				.setColor((entry.action == "MEMBER_KICK") ? "#ffff00" : "#FF0000")
+				.addField(`${leavetype} user:`, `${member} (${member.displayName}) with ID of ${member.id}`)
+				.addField(`${leavetype} by:`, `${entry.executor}`)
 				.addField("Time:", entry.createdAt)
 				.addField("Reason:", kickReason);
 
-			let adminChannel = member.guild.channels.cache.filter(c=>c.id == bot.guildSettings[member.guild.id].adminchannel).first();
+			let adminChannel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].adminchannel);
 			if(adminChannel) adminChannel.send(kickEmbed);
-			leavetype += `, by: <@${entry.executor}>`
+			leavetype += `, by: ${entry.executor}`
 		}
 
 		let channel;
 		if (bot.guildSettings[member.guild.id].leavechannel) {
-			channel = member.guild.channels.cache.filter(c => c.id == bot.guildSettings[member.guild.id].leavechannel).first();
+			channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].leavechannel);
 		}
 		else if (bot.guildSettings[member.guild.id].defaultchannel) {
-			channel = member.guild.channels.cache.filter(c => c.id == bot.guildSettings[member.guild.id].defaultchannel).first();
+			channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].defaultchannel);
 		} else {
 			channel = member.guild.channels.cache.filter(c => c.type === 'text' && c.permissionsFor(member.guild.me).has(["SEND_MESSAGES", "EMBED_LINKS", "VIEW_CHANNEL"])).sort((a, b) => a.calculatedPosition - b.calculatedPosition).first();
 		}
@@ -555,7 +555,7 @@ bot.on("guildMemberRemove", async (member) => {
 			    	r.remove(member.id);
 		    	});
 		    	pmmessage += (`\nYour **channel-specific** roles have been stripped as you have left the server. You will need to re-react the next time you join.`);
-			}).catch(e => console.error(e)).finally(console.log("No welcome message?"));
+			}).catch(e => console.error(e)).finally(console.log("No role message?"));
 		}
 		if(pmmessage) member.user.send(pmmessage);
 	}catch(e){
@@ -641,7 +641,9 @@ bot.on("message", async message => {
 	if(cmd) {
 		if(cmd.help.name == "gear"){
 			message.delete({timeout: 5000});
-		} else {
+		} else if (cmd.help.name == "clear") {
+			//dont delete the !clear command, so it can get reliably picked up with bulkDelete();
+		}	else {
 			message.delete();
 		}
 		let index = indexOfObjectByName(bot.guildSettings[message.guild.id].commandlocked, message.author.id);
