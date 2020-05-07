@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 	//If no specified @ user mention
 	if(!toSlap) {
 		let msg = await message.reply("You did not specify a user @mention to slap.");
-		msg.delete(7000).catch(err => console.log(err));
+		msg.delete({timeout:7000}).catch(err => console.log(err));
 		return;
 	}
 
@@ -12,6 +12,7 @@ module.exports.run = async (bot, message, args) => {
 
 	message.channel.send(`${message.author} *slaps the fuck outta* ${toSlap}, you've been a naughty boi.`);
 	//TODO - add amount of times person has been slapped
+	//TODO - add reaction after the slap
 }
 
 module.exports.help = {
