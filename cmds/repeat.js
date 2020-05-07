@@ -1,12 +1,7 @@
 module.exports.run = async (bot, message, args) => {
-	let replyRepeat = "";
-
 	if(!args[0]) {
-		if(bot.guildSettings[message.guild.id].repeat) replyRepeat = "on";
-		if(!bot.guildSettings[message.guild.id].repeat) replyRepeat = "off";
-		let msg = await message.reply(`Repeat is: ${replyRepeat}.`);
-		msg.delete(7000);
-		return;
+		let replyRepeat = (bot.guildSettings[message.guild.id].repeat) ? "on" : "off";
+		return await message.reply(`Repeat is: ${replyRepeat}.`).then(msg => msg.delete({timeout:7000}));
 	}
 	else if(args[0] == "on"){
 		bot.guildSettings[message.guild.id].repeat = true;
@@ -15,11 +10,9 @@ module.exports.run = async (bot, message, args) => {
 		bot.guildSettings[message.guild.id].repeat = false;
 	}
 	else{
-		let msg = await message.reply("Please enter a valid value for this command. [on/off]");
-		msg.delete(7000);
-		return;
+		return await message.reply("Please enter a valid value for this command. [on/off]").then(msg => msg.delete({timeout:7000}));
+		msg.delete({timeout:7000});
 	}
-	
 	message.reply(`repeat is now ${args[0]}.`);
 }
 
