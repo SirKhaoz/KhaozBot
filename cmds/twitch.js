@@ -8,7 +8,7 @@ const https = require("https");
 const fs = require("fs");
 
 var server, twitchChannels;
-
+//TODO, fix this whole command with new twitch API
 module.exports.run = async (bot, message, args) => {
 	let action = args[0];
 
