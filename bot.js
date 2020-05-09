@@ -640,18 +640,14 @@ bot.on("message", async message => {
 
 	if(cmd) {
 		if(cmd.help.name == "gear"){
-			let mtd = message;
-			mtd.delete({timeout: 5000}).catch(e => console.error(e));
+			message.delete({timeout:5000}).catch(e => console.log(e));
 		} else if (cmd.help.name == "clear") {
 			//dont delete the !clear command, so it can get reliably picked up with bulkDelete();
 		}	else {
 			message.delete();
 		}
-		let index = indexOfObjectByName(bot.guildSettings[message.guild.id].commandlocked, message.author.id);
-		if(index != -1){
-			let msg = await message.reply(`You have been command locked, please see an admin.`);
-			msg.delete({timeout:3000}).catch(err => console.error(err));
-			return;
+		if(indexOfObjectByName(bot.guildSettings[message.guild.id].commandlocked, message.author.id) != -1){
+			return message.reply(`You have been command locked, please see an admin.`).then(m => m.delete({timeout: 3000}).catch(e => console.error(e)));
 		}
 		if(bot.guildSettings[message.guild.id].movecommands){
 			let movechannel;
