@@ -8,18 +8,18 @@ module.exports.run = async (bot, message, args) => {
 		let id = Number(args[0]);
 		if(!id) return message.channel.send("Supply an ID.");
 		if(isNaN(id)) return message.channel.send("Supply a valid number.");
-		
+
 		let entry = body.find(post => post.id === id);
 		if(!entry) return message.channel.send("Could not find entry.");
 		console.log(entry);
 
-		let embed = new Discord.RichEmbed()
+		let embed = new Discord.MessageEmbed()
 			.setAuthor(entry.title)
 			.setDescription(entry.body)
 			.addField("Author ID", entry.userId)
 			.setFooter("Post ID: " + entry.id);
 
-		message.channel.send({embed :embed});
+		message.channel.send(embed);
 
 
 	});
