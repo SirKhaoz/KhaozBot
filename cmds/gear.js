@@ -8,25 +8,21 @@ module.exports.run = async (bot, message, args) => {
 
 	if(!args[0] && message.attachments.size <= 0){
 		if(!bot.bdoplayers[message.author.id]){
-			message.reply("You have not logged any gear in the database.");
-			return;
+			return message.reply("You have not logged any gear in the database.");
 		}else{
-			message.reply(`Showing your gear,`, {files: [{
+			return message.reply(`Showing your gear,`, {files: [{
 				attachment: `${bot.bdoplayers[message.author.id].gearpic}`,
 				name: `${bot.bdoplayers[message.author.id].gearpic}`
 			}]});
-			return;
 		}
 	}else if(user){
 		if(!bot.bdoplayers[user.id]){
-			message.reply(user + " has not logged any gear in the database.");
-			return;
+			return message.reply(user + " has not logged any gear in the database.");
 		}else{
-			message.reply(`Showing gear of ${user},`, {files: [{
+			return message.reply(`Showing gear of ${user},`, {files: [{
 				attachment: `${bot.bdoplayers[user.id].gearpic}`,
 				name: `${bot.bdoplayers[user.id].gearpic}`
 			}]});
-			return;
 		}
 	}else if(attstatus[0]){
 		if(bot.bdoplayers[message.author.id]) {
@@ -53,8 +49,7 @@ module.exports.run = async (bot, message, args) => {
 			}
 		});
 	}else if(!attstatus[0] && message.attachments.size > 0){
-		await message.reply(`Upload failed with reason: *'${attstatus[1]}'*.`)
-		return;
+		return message.reply(`Upload failed with reason: *'${attstatus[1]}'*.`)
 	}else{
 		return message.reply("(gear help) Please do one of the following:\n1. Type !gear to see your saved gear (if any).\n\
 2. Type !gear and attach/paste a picture of your gear to save in the database.\n\
