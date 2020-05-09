@@ -640,7 +640,8 @@ bot.on("message", async message => {
 
 	if(cmd) {
 		if(cmd.help.name == "gear"){
-			message.delete({timeout: 5000});
+			let mtd = message;
+			mtd.delete({timeout: 5000}).catch(e => console.error(e));
 		} else if (cmd.help.name == "clear") {
 			//dont delete the !clear command, so it can get reliably picked up with bulkDelete();
 		}	else {
@@ -653,25 +654,21 @@ bot.on("message", async message => {
 			return;
 		}
 		if(bot.guildSettings[message.guild.id].movecommands){
-			let movechannel, msg;
+			let movechannel;
 			if(cmd.help.type == "command" && message.channel.id != bot.guildSettings[message.guild.id].botchannel){
-				movechannel = message.guild.channels.cache.filter(c=>c.id == bot.guildSettings[message.guild.id].botchannel).first();
-				msg = await message.reply(`This command has been moved to ${movechannel}.`);
+				movechannel = message.guild.channels.cache.get(bot.guildSettings[message.guild.id].botchannel);
+				message.reply(`This command has been moved to ${movechannel}.`).then(m => m.delete({timeout: 15000}).catch(e => console.error(e)));
 				message.channel = movechannel;
-				msg.delete({timeout: 10000}).catch(err => console.error(err));
 			} else if(cmd.help.type == "music" && message.channel.id != bot.guildSettings[message.guild.id].musicchannel){
-				movechannel = message.guild.channels.cache.filter(c=>c.id == bot.guildSettings[message.guild.id].musicchannel).first();
-				msg = await message.reply(`This command has been moved to ${movechannel}.`);
+				movechannel = message.guild.channels.cache.get(bot.guildSettings[message.guild.id].musicchannel);
+				message.reply(`This command has been moved to ${movechannel}.`).then(m => m.delete({timeout: 15000}).catch(e => console.error(e)));
 				message.channel = movechannel;
-				msg.delete({timeout: 10000}).catch(err => console.error(err));
 			} else if(cmd.help.type == "bdo" && message.channel.id != bot.guildSettings[message.guild.id].bdochannel){
-				movechannel = message.guild.channels.cache.filter(c=>c.id == bot.guildSettings[message.guild.id].bdochannel).first();
-				msg = await message.reply(`This command has been moved to ${movechannel}.`);
+				movechannel = message.guild.channels.cache.get(bot.guildSettings[message.guild.id].bdochannel);
+				message.reply(`This command has been moved to ${movechannel}.`).then(m => m.delete({timeout: 15000}).catch(e => console.error(e)));
 				message.channel = movechannel;
-				msg.delete({timeout: 10000}).catch(err => console.error(err));
 			}
 		}
-
 		cmd.run(bot, message, args);
 	}
 });
