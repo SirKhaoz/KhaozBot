@@ -16,7 +16,7 @@ bot.commands = new Discord.Collection();
 bot.helps = new Discord.Collection();
 bot.example = new Discord.Collection();
 bot.detail = new Discord.Collection();
-var tickinterval = 60000;
+var tickinterval = 25000;
 const talkedRecently = new Set();
 
 bot.login(botSettings.token);
@@ -204,8 +204,6 @@ bot.on("ready", async () => {
 			},null,null,"Pacific/Auckland"
 		).start();
 	});
-
-	console.log(bot.bossescrons);
 
 	bot.setInterval(() => {
 		bot.guilds.cache.forEach(g => {

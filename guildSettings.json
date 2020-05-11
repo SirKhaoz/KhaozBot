@@ -3,7 +3,7 @@
       "guildID": "209104845859323906",
       "defaultchannel": "668052797811589140",
       "adminchannel": "637380710897942528",
-      "twitchchannel": "452621841190748170",
+      "twitchchannel": "704130799867396096",
       "touretteschannel": "209104846362509312",
       "botchannel": "637383895360339989",
       "leaguechannel": "667995980251136010",
@@ -11,18 +11,9 @@
       "movecommands": true,
       "twitchChannels": [
          {
-            "name": "sirkhaoz",
-            "timestamp": 1564394446577,
-            "online": false
-         },
-         {
-            "name": "viklok",
-            "timestamp": 1567029462871,
-            "online": false
-         },
-         {
-            "name": "jadedwrath",
-            "timestamp": 1555634124882,
+            "name": "crabguy",
+            "id": "473620153",
+            "timestamp": 0,
             "online": false
          }
       ],
@@ -170,18 +161,7 @@
       "leaguechannel": "399178026639949825",
       "bdochannel": "399178026639949825",
       "movecommands": true,
-      "twitchChannels": [
-         {
-            "name": "nightingale_nz",
-            "timestamp": 1568201537538,
-            "online": false
-         },
-         {
-            "name": "sirkhaoz",
-            "timestamp": 1564394446573,
-            "online": false
-         }
-      ],
+      "twitchChannels": [],
       "summonerNames": [],
       "commandlocked": [],
       "autopurge": false,
@@ -395,23 +375,7 @@
          }
       },
       "movecommands": true,
-      "twitchChannels": [
-         {
-            "name": "larryfish",
-            "timestamp": 0,
-            "online": false
-         },
-         {
-            "name": "bsampson_",
-            "timestamp": 0,
-            "online": false
-         },
-         {
-            "name": "peetang",
-            "timestamp": 0,
-            "online": false
-         }
-      ],
+      "twitchChannels": [],
       "summonerNames": [],
       "commandlocked": [],
       "autopurge": false,
