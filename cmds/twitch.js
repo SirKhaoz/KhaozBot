@@ -212,8 +212,8 @@ exports.apiCallback = function(server, twitchChannel, res){
         .setImage(stream.thumbnail_url.replace(/-{width}x{height}/g, ''))
         .setThumbnail(stream.thumbnail_url.replace(/-{width}x{height}/g, ''))
         .addField("Viewers", stream.viewer_count, true)
-				.addField("Follower", "need to look this up, seperate call to API", true)
-				.addField("thumbnail fix", "fix the thumbnail <@78306944179245056>, seperate call needed", true)
+				.addField("Followers", "TODO", true)
+				.addField("Thumbnail Fix", "fix the thumbnail <@78306944179245056>", true)
         //.addField("Followers", res.stream.channel.followers, true);
 
       channel.send(embed).then(
