@@ -344,7 +344,7 @@
       "defaultchannel": "444260557319569441",
       "welcomechannel": "444260557319569441",
       "leavechannel": "444260557319569441",
-      "twitchchannel": "705562842220331028",
+      "twitchchannel": "708051468497715250",
       "touretteschannel": "447995783921401866",
       "afkchannel": "444261118945525770",
       "botchannel": "708219198798692352",
@@ -375,7 +375,20 @@
          }
       },
       "movecommands": true,
-      "twitchChannels": [],
+      "twitchChannels": [
+         {
+            "name": "driftynz",
+            "id": "39765777",
+            "timestamp": 1589190677620,
+            "online": true
+         },
+         {
+            "name": "bsampson_",
+            "id": "234216421",
+            "timestamp": 1589182842302,
+            "online": false
+         }
+      ],
       "summonerNames": [],
       "commandlocked": [],
       "autopurge": false,
