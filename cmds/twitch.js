@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
   if(action == "remove"){
   	if(!message.member.permissions.has("ADMINISTRATOR")) {
 			let msg = await message.reply("You do not have permission to remove a streamer from the twitch list.");
-			msg.delete({timeout:7000}).catch(err => console.log(err));
+			msg.delete({timeout:7000}).catch(err => console.error(err));
 			return;
 		}
 	  streamer = args.join(" ").trim();
@@ -51,7 +51,7 @@ module.exports.run = async (bot, message, args) => {
   }else if(action == "add"){
   	if(!message.member.permissions.has("ADMINISTRATOR")) {
 			let msg = await message.reply("You do not have permission to add streamer to the twitch list.");
-			msg.delete({timeout:7000}).catch(err => console.log(err));
+			msg.delete({timeout:7000}).catch(err => console.error(err));
 			return;
 		}
     streamer = args.join(" ").trim();
@@ -106,7 +106,7 @@ function print(msg, err){
 
     console.log("[" + h + ":" + m + ":" + s + "]", msg);
     if(err){
-        console.log(err);
+        console.error(err);
     }
 }
 
@@ -137,7 +137,6 @@ function getStreamerID(name, callback){
 		});
 
 		res.on("end", ()=>{
-			console.log("on end",body)
 			var json;
 			try {
 				json = JSON.parse(body);
@@ -149,6 +148,7 @@ function getStreamerID(name, callback){
 			if(json.status == 404){
 				return callback(undefined);
 			}else{
+				//console.log("get streamer ID JSON",json)
 				return callback(json.data[0]);
 			}
 		});
@@ -158,29 +158,16 @@ function getStreamerID(name, callback){
 	});
 }
 
-exports.callApi = function(server, twitchChannel, callback, getStreamInfo){
-    var opt;
-    try {
-        var apiPath;
-        if(getStreamInfo){
-            apiPath = "/helix/streams" + twitchChannel.id.trim();
-        }else{
-            apiPath = "/helix/streams" + twitchChannel.id;
+exports.callApi = function(server, twitchChannel, callback){
+    var apiPath = "/helix/streams?user_login=" + twitchChannel.name;
+    var opt = {
+        host: "api.twitch.tv",
+        path: apiPath,
+        headers: {
+            "Client-ID": botSettings.twitchClientID,
+            Accept: "application/vnd.twitchtv.v5+json"
         }
-        opt = {
-            host: "api.twitch.tv",
-            path: apiPath,
-            headers: {
-                "Client-ID": botSettings.twitchClientID,
-								"user_ID":twitchChannel.id,
-                Accept: "application/vnd.twitchtv.v5+json"
-            }
-        };
-    }
-    catch(err){
-        print(err);
-        return;
-    }
+    };
     https.get(opt, (res)=>{
       var body = "";
 
@@ -189,7 +176,6 @@ exports.callApi = function(server, twitchChannel, callback, getStreamInfo){
       });
 
       res.on("end", ()=>{
-				console.log("on end",body)
         var json;
         try {
           json = JSON.parse(body);
@@ -211,41 +197,44 @@ exports.callApi = function(server, twitchChannel, callback, getStreamInfo){
 }
 
 exports.apiCallback = function(server, twitchChannel, res){
-    if(res && !twitchChannel.online && res.stream && twitchChannel.timestamp + timeout <= Date.now()){
-        try {
-            var guild = bot.channels.cache.find("id", (server.guildID));
-            var channel = guild.channels.cache.filter(c => c.id === bot.guildSettings[server.guildID].twitchchannel).first();
+	//console.log("stream JSON", res.data[0]);
+	let stream = res.data[0];
+  if(stream && !twitchChannel.online && twitchChannel.timestamp + timeout <= Date.now()){
+    try {
+      var guild = bot.guilds.cache.get(server.guildID);
+      var channel = guild.channels.cache.get(bot.guildSettings[server.guildID].twitchchannel);
 
-            var embed = new Discord.RichEmbed()
-	            .setColor("#9689b9")
-	            .setTitle(res.stream.channel.display_name.replace(/_/g, "\\_"))
-	            .setURL(res.stream.channel.url)
-	            .setDescription(`@here This person is now live!!\n**${res.stream.channel.status}**\n${res.stream.game}`)
-	            .setImage(res.stream.preview.large)
-	            .setThumbnail(res.stream.channel.logo)
-	            .addField("Viewers", res.stream.viewers, true)
-	            .addField("Followers", res.stream.channel.followers, true);
+      var embed = new Discord.MessageEmbed()
+        .setColor("#9689b9")
+        .setTitle(stream.user_name.replace(/_/g, "\\_") + " - CLICK HERE TO WATCH")
+        .setURL("https://twitch.tv/" + stream.user_name)
+        .setDescription(`${stream.user_name.replace(/_/g, "\\_")} is now **${stream.type}**!!\n\nPlaying: ${stream.game_id} (this is a game ID - I need to look this up against twich's list.)`)
+        .setImage(stream.thumbnail_url.replace(/-{width}x{height}/g, ''))
+        .setThumbnail(stream.thumbnail_url.replace(/-{width}x{height}/g, ''))
+        .addField("Viewers", stream.viewer_count, true)
+				.addField("Follower", "need to look this up, seperate call to API", true)
+				.addField("thumbnail fix", "fix the thumbnail <@78306944179245056>, seperate call needed", true)
+        //.addField("Followers", res.stream.channel.followers, true);
 
-            channel.send({embed: embed}).then(
-                print(`Sent embed to channel '${channel.name}' in guild '${guild.name}'.`)
-            );
-            twitchChannel.online = true;
-            twitchChannel.timestamp = Date.now();
-        }
-        catch(err){
-            print(err);
-        }
-    }else if(res == null){
-			console.log(twitchChannel);
-      twitchChannel.online = false;
+      channel.send(embed).then(
+          print(`Sent embed to channel '${channel.name}' in guild '${guild.name}'.`)
+      );
+      twitchChannel.online = true;
+      twitchChannel.timestamp = Date.now();
     }
+    catch(err){
+        print(err);
+    }
+  }else if(stream == null){
+    twitchChannel.online = false;
+  }
 }
 
 exports.tick = function(){
   for(var key in bot.guildSettings){
     for(let j = 0; j < bot.guildSettings[key].twitchChannels.length; j++){
       if(bot.guildSettings[key].twitchChannels[j]){
-        exports.callApi(bot.guildSettings[key], bot.guildSettings[key].twitchChannels[j], exports.apiCallback, true);
+        exports.callApi(bot.guildSettings[key], bot.guildSettings[key].twitchChannels[j], exports.apiCallback);
       }
     }
   }
