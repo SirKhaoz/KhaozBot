@@ -100,7 +100,7 @@ function sendbossping(boss, time, timetoboss, alertmessage){
 	});
 }
 
-//setInterval(twitch.tick, tickinterval);
+setInterval(twitch.tick, tickinterval);
 //setInterval(lollivegame.tick, tickinterval);
 
 bot.on("ready", async () => {
@@ -639,6 +639,7 @@ bot.on("message", async message => {
 	}
 
 	if(cmd) {
+		let movechannel;
 		if(cmd.help.name == "gear"){
 			message.delete({timeout:5000}).catch(e => console.log(e));
 		} else if (cmd.help.name == "clear") {
@@ -650,22 +651,21 @@ bot.on("message", async message => {
 			return message.reply(`You have been command locked, please see an admin.`).then(m => m.delete({timeout: 3000}).catch(e => console.error(e)));
 		}
 		if(bot.guildSettings[message.guild.id].movecommands){
-			let movechannel;
 			if(cmd.help.type == "command" && message.channel.id != bot.guildSettings[message.guild.id].botchannel){
-				movechannel = message.guild.channels.cache.get(bot.guildSettings[message.guild.id].botchannel);
+				movechannel = await message.guild.channels.cache.get(bot.guildSettings[message.guild.id].botchannel);
 				message.reply(`This command has been moved to ${movechannel}.`).then(m => m.delete({timeout: 15000}).catch(e => console.error(e)));
 				message.channel = movechannel;
 			} else if(cmd.help.type == "music" && message.channel.id != bot.guildSettings[message.guild.id].musicchannel){
-				movechannel = message.guild.channels.cache.get(bot.guildSettings[message.guild.id].musicchannel);
+				movechannel = await message.guild.channels.cache.get(bot.guildSettings[message.guild.id].musicchannel);
 				message.reply(`This command has been moved to ${movechannel}.`).then(m => m.delete({timeout: 15000}).catch(e => console.error(e)));
 				message.channel = movechannel;
 			} else if(cmd.help.type == "bdo" && message.channel.id != bot.guildSettings[message.guild.id].bdochannel){
-				movechannel = message.guild.channels.cache.get(bot.guildSettings[message.guild.id].bdochannel);
+				movechannel = await message.guild.channels.cache.get(bot.guildSettings[message.guild.id].bdochannel);
 				message.reply(`This command has been moved to ${movechannel}.`).then(m => m.delete({timeout: 15000}).catch(e => console.error(e)));
 				message.channel = movechannel;
 			}
 		}
-		cmd.run(bot, message, args);
+		cmd.run(bot, message, args, movechannel);
 	}
 });
 
