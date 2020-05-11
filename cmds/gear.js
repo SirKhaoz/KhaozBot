@@ -2,14 +2,16 @@ const fs = require('fs');
 const path = require('path');
 const request = require('request');
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, movechannel) => {
 	let user = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[0]);
 	let attstatus = ValidContent(message);
 
 	if(!args[0] && message.attachments.size <= 0){
 		if(!bot.bdoplayers[message.author.id]){
+			//message.channel = movechannel;
 			return message.reply("You have not logged any gear in the database.");
 		}else{
+			//message.channel = movechannel;
 			return message.reply(`Showing your gear,`, {files: [{
 				attachment: `${bot.bdoplayers[message.author.id].gearpic}`,
 				name: `${bot.bdoplayers[message.author.id].gearpic}`
