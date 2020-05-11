@@ -1,17 +1,14 @@
 const Discord = module.require("discord.js");
 const nodefetch = require("node-fetch");
 const botSettings = require("../resources/keys.json");
-const channelPath = __dirname + "/.channels";
-const apiUrl = "https://api.twitch.tv/kraken";
+const apiUrl = "https://api.twitch.tv";
 const timeout = 5*60000;
 const https = require("https");
-const fs = require("fs");
 
 var server, twitchChannels;
 //TODO, fix this whole command with new twitch API
 module.exports.run = async (bot, message, args) => {
 	let action = args[0];
-
 	//Quick check to see if user has not given a name.
 	if(!action){
 		//Reply letting the user know, then delete the message after 7 seconds.
@@ -34,44 +31,43 @@ module.exports.run = async (bot, message, args) => {
   var streamer;
   if(action == "remove"){
   	if(!message.member.permissions.has("ADMINISTRATOR")) {
-		let msg = await message.reply("You do not have permission to remove a streamer from the twitch list.");
-		msg.delete({timeout:7000}).catch(err => console.log(err));
-		return;
-	}
-      streamer = args.join(" ").trim();
-      index = indexOfObjectByName(twitchChannels, streamer);
-      if(index != -1){
-          twitchChannels.splice(index, 1);
-          index = indexOfObjectByName(twitchChannels, streamer);
-          if(index == -1){
-              message.reply("Removed " + streamer + ".");
-          }else{
-              message.reply(streamer + " isn't in the list of notified streamers.");
-          }
-      }else{
-          message.reply(streamer + " isn't in the list of notified streamers.");
-      }
-
+			let msg = await message.reply("You do not have permission to remove a streamer from the twitch list.");
+			msg.delete({timeout:7000}).catch(err => console.log(err));
+			return;
+		}
+	  streamer = args.join(" ").trim();
+	  index = indexOfObjectByName(twitchChannels, streamer);
+	  if(index != -1){
+	      twitchChannels.splice(index, 1);
+	      index = indexOfObjectByName(twitchChannels, streamer);
+	      if(index == -1){
+	          message.reply("Removed " + streamer + ".");
+	      }else{
+	          message.reply(streamer + " isn't in the list of notified streamers.");
+	      }
+	  }else{
+	      message.reply(streamer + " isn't in the list of notified streamers.");
+	  }
   }else if(action == "add"){
   	if(!message.member.permissions.has("ADMINISTRATOR")) {
-		let msg = await message.reply("You do not have permission to add streamer to the twitch list.");
-		msg.delete({timeout:7000}).catch(err => console.log(err));
-		return;
-	}
-      streamer = args.join(" ").trim();
-      var channelObject = {name: streamer};
-      index = indexOfObjectByName(twitchChannels, streamer);
-      exports.callApi(server, channelObject, (serv, chan, res)=>{
-          if(index != -1){
-              message.reply(streamer + " is already in the list of notified streamers.");
-          }else if(res){
-              twitchChannels.push({name: streamer, timestamp: 0, online: false});
-              message.reply("Added " + streamer + ".");
-              exports.tick();
-          }else{
-              message.reply(streamer + " doesn't seem to exist in the twitch database. Did you type it correctly?");
-          }
-      }, false);
+			let msg = await message.reply("You do not have permission to add streamer to the twitch list.");
+			msg.delete({timeout:7000}).catch(err => console.log(err));
+			return;
+		}
+    streamer = args.join(" ").trim();
+
+		getStreamerID(streamer, (res) => {
+	    index = indexOfObjectByName(twitchChannels, streamer);
+
+			if(index != -1){
+					message.reply(streamer + " is already in the list of notified streamers.");
+			}else if(res){
+					twitchChannels.push({name: streamer,id:res.id,timestamp: 0, online: false});
+					message.reply("Added " + streamer + " to the twitch list.");
+			}else{
+					message.reply(streamer + " doesn't seem to exist in the twitch database. Did you type it correctly?");
+			}
+		});
 
   }else if(action == "list"){
       let msg = "\n";
@@ -123,21 +119,61 @@ function indexOfObjectByName(array, value){
     return -1;
 }
 
+function getStreamerID(name, callback){
+	var apiPath = "/helix/users?login=" + name.trim();
+	var opt = {
+			host: "api.twitch.tv",
+			path: apiPath,
+			headers: {
+					"Client-ID": botSettings.twitchClientID,
+					Accept: "application/vnd.twitchtv.v5+json"
+			}
+	};
+	https.get(opt, (res)=>{
+		var body = "";
+
+		res.on("data", (chunk)=>{
+			body += chunk;
+		});
+
+		res.on("end", ()=>{
+			console.log("on end",body)
+			var json;
+			try {
+				json = JSON.parse(body);
+			}
+			catch(err){
+				print(err);
+				return;
+			}
+			if(json.status == 404){
+				return callback(undefined);
+			}else{
+				return callback(json.data[0]);
+			}
+		});
+
+	}).on("error", (err)=>{
+		print(err);
+	});
+}
+
 exports.callApi = function(server, twitchChannel, callback, getStreamInfo){
     var opt;
     try {
         var apiPath;
         if(getStreamInfo){
-            apiPath = "/kraken/streams/" + twitchChannel.name.trim();
+            apiPath = "/helix/streams" + twitchChannel.id.trim();
         }else{
-            apiPath = "/kraken/channels/" + twitchChannel.name.trim();
+            apiPath = "/helix/streams" + twitchChannel.id;
         }
         opt = {
             host: "api.twitch.tv",
             path: apiPath,
             headers: {
                 "Client-ID": botSettings.twitchClientID,
-                Accept: "application/vnd.twitchtv.v3+json"
+								"user_ID":twitchChannel.id,
+                Accept: "application/vnd.twitchtv.v5+json"
             }
         };
     }
@@ -146,30 +182,31 @@ exports.callApi = function(server, twitchChannel, callback, getStreamInfo){
         return;
     }
     https.get(opt, (res)=>{
-        var body = "";
+      var body = "";
 
-        res.on("data", (chunk)=>{
-            body += chunk;
-        });
+      res.on("data", (chunk)=>{
+        body += chunk;
+      });
 
-        res.on("end", ()=>{
-            var json;
-            try {
-                json = JSON.parse(body);
-            }
-            catch(err){
-                print(err);
-                return;
-            }
-            if(json.status == 404){
-                callback(server, undefined, undefined);
-            }else{
-                callback(server, twitchChannel, json);
-            }
-        });
+      res.on("end", ()=>{
+				console.log("on end",body)
+        var json;
+        try {
+          json = JSON.parse(body);
+        }
+        catch(err){
+          print(err);
+          return;
+        }
+        if(json.status == 404){
+          callback(server, twitchChannel, undefined);
+        }else{
+          callback(server, twitchChannel, json);
+        }
+      });
 
     }).on("error", (err)=>{
-        print(err);
+      print(err);
     });
 }
 
@@ -180,14 +217,14 @@ exports.apiCallback = function(server, twitchChannel, res){
             var channel = guild.channels.cache.filter(c => c.id === bot.guildSettings[server.guildID].twitchchannel).first();
 
             var embed = new Discord.RichEmbed()
-                        .setColor("#9689b9")
-                        .setTitle(res.stream.channel.display_name.replace(/_/g, "\\_"))
-                        .setURL(res.stream.channel.url)
-                        .setDescription(`@here This person is now live!!\n**${res.stream.channel.status}**\n${res.stream.game}`)
-                        .setImage(res.stream.preview.large)
-                        .setThumbnail(res.stream.channel.logo)
-                        .addField("Viewers", res.stream.viewers, true)
-                        .addField("Followers", res.stream.channel.followers, true);
+	            .setColor("#9689b9")
+	            .setTitle(res.stream.channel.display_name.replace(/_/g, "\\_"))
+	            .setURL(res.stream.channel.url)
+	            .setDescription(`@here This person is now live!!\n**${res.stream.channel.status}**\n${res.stream.game}`)
+	            .setImage(res.stream.preview.large)
+	            .setThumbnail(res.stream.channel.logo)
+	            .addField("Viewers", res.stream.viewers, true)
+	            .addField("Followers", res.stream.channel.followers, true);
 
             channel.send({embed: embed}).then(
                 print(`Sent embed to channel '${channel.name}' in guild '${guild.name}'.`)
@@ -198,27 +235,28 @@ exports.apiCallback = function(server, twitchChannel, res){
         catch(err){
             print(err);
         }
-    }else if(res.stream === null){
-        twitchChannel.online = false;
+    }else if(res == null){
+			console.log(twitchChannel);
+      twitchChannel.online = false;
     }
 }
 
 exports.tick = function(){
-    for(var key in bot.guildSettings){
-        for(let j = 0; j < bot.guildSettings[key].twitchChannels.length; j++){
-            if(bot.guildSettings[key].twitchChannels[j]){
-                exports.callApi(bot.guildSettings[key], bot.guildSettings[key].twitchChannels[j], exports.apiCallback, true);
-            }
-        }
+  for(var key in bot.guildSettings){
+    for(let j = 0; j < bot.guildSettings[key].twitchChannels.length; j++){
+      if(bot.guildSettings[key].twitchChannels[j]){
+        exports.callApi(bot.guildSettings[key], bot.guildSettings[key].twitchChannels[j], exports.apiCallback, true);
+      }
     }
+  }
 }
 
 module.exports.help = {
 	name: "twitch",
-    type: "command",
+  type: "static",
 	desc: "Twitch commands to add, remove or list watched twitch streams.",
 	example: "!twitch [command] *or* !twitch [command] [command option]",
-	detail: "**!twitch add [streamer]** - *This is to add a streamer to the watched list\n\
+	detail: `**!twitch add [streamer]** - *This is to add a streamer to the watched list\n\
 **!twitch remove [streamer]** - *This is to remove a stream from the watched list\n\
-**!twitch list** - *This is to list"
+**!twitch list** - *This is to list`
 }
