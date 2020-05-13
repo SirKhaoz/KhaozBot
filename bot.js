@@ -34,9 +34,11 @@ bot.reminders = require("./resources/reminders.json");
 bot.lolaccounts = require("./resources/lolaccounts.json");
 bot.savedmessages = require("./resources/savedmessages.json");
 bot.bdobossesinfo = require("./resources/bdobosses.json");
+bot.birthdays = require("./resources/birthdays.json");
 bot.bossescrons = [];
 bot.musicguilds = {};
 bot.userchannels = {};
+bot.twitchOauth;
 
 //Load all commands from /cmds/ dir.
 fs.readdir("./cmds/", (err, files) => {
@@ -374,6 +376,9 @@ bot.on("ready", async () => {
 		fs.writeFile("./resources/savedmessages.json", JSON.stringify(bot.savedmessages, null, 3), err => {
 			if(err) throw err;
 		});
+		fs.writeFile("./resources/birthdays.json", JSON.stringify(bot.birthdays, null, 3), err => {
+			if(err) throw err;
+		});
 		console.log("Saved all files successfully.");
 	}, 30000);
 
@@ -538,7 +543,7 @@ bot.on("guildMemberRemove", async (member) => {
 
 		let pmmessage = null;
 		if(bot.guildSettings[member.guild.id].welcomemessage.messageid){
-			let channel = member.guild.channels.cache.find(c => c.id == bot.guildSettings[member.guild.id].welcomemessage.channelid);
+			let channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].welcomemessage.channelid);
 			channel.messages.fetch(bot.guildSettings[member.guild.id].welcomemessage.messageid).then(msg => {
 		    	msg.reactions.forEach(async r => {
 			    	r.remove(member.id);
@@ -547,7 +552,7 @@ bot.on("guildMemberRemove", async (member) => {
 			}).catch(e => console.error(e)).finally(console.log("No welcome message?"));
 		}
 		if(bot.guildSettings[member.guild.id].rolemessage.messageid){
-			let channel = member.guild.channels.cache.find(c => c.id == bot.guildSettings[member.guild.id].rolemessage.channelid);
+			let channel = member.guild.channels.cache.find(bot.guildSettings[member.guild.id].rolemessage.channelid);
 			channel.messages.fetch(bot.guildSettings[member.guild.id].rolemessage.messageid).then(msg => {
 		    	msg.reactions.forEach(async r => {
 			    	r.remove(member.id);
