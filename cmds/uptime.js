@@ -6,14 +6,14 @@ module.exports.run = async (bot, message, args) => {
 	let minutes = Math.floor(totalSeconds / 60);
 	let seconds = totalSeconds % 60;
 
-	let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${math.Round(seconds)} seconds`;
+	let uptime = `${days} days, ${hours} hours, ${minutes} minutes and ${Math.round(seconds)} seconds`;
 
-	message.reply(`The bot has been up for: ${uptime}\n(since last restart - most likley a forced Discord shard reconnect)`);
+	message.reply(`The bot has been up for: ${uptime} (since last restart)\n This restart was most likley a forced-by-Discord shard reconnect.`);
 }
 
 module.exports.help = {
 	name: "uptime",
-	type: "command",
+	type: "static",
 	desc: "Displays the uptime of the bot.",
 	example: "!uptime"
 }
