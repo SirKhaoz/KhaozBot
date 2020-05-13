@@ -165,6 +165,7 @@ exports.callApi = function(server, twitchChannel, callback){
         path: apiPath,
         headers: {
             "Client-ID": botSettings.twitchClientID,
+						"client_secret": botSettings.twitchClientSecret,
             Accept: "application/vnd.twitchtv.v5+json"
         }
     };
@@ -197,7 +198,8 @@ exports.callApi = function(server, twitchChannel, callback){
 }
 
 exports.apiCallback = function(server, twitchChannel, res){
-	//console.log("stream JSON", res.data[0]);
+	console.log(res)
+	if(res.error != null) return twitchChannel.online = false;
 	let stream = res.data[0];
   if(stream && !twitchChannel.online && twitchChannel.timestamp + timeout <= Date.now()){
     try {
@@ -225,9 +227,46 @@ exports.apiCallback = function(server, twitchChannel, res){
     catch(err){
         print(err);
     }
-  }else if(stream == null){
-    twitchChannel.online = false;
   }
+}
+
+exports.getOAuth = function(){
+	var apiPath = "/helix/streams?user_login=" + twitchChannel.name;
+	var opt = {
+			host: "api.twitch.tv",
+			path: apiPath,
+			headers: {
+					"Client-ID": botSettings.twitchClientID,
+					"client_secret": botSettings.twitchClientSecret,
+					Accept: "application/vnd.twitchtv.v5+json"
+			}
+	};
+	https.get(opt, (res)=>{
+		var body = "";
+
+		res.on("data", (chunk)=>{
+			body += chunk;
+		});
+
+		res.on("end", ()=>{
+			var json;
+			try {
+				json = JSON.parse(body);
+			}
+			catch(err){
+				print(err);
+				return;
+			}
+			if(json.status == 404){
+				callback(server, twitchChannel, undefined);
+			}else{
+				callback(server, twitchChannel, json);
+			}
+		});
+
+	}).on("error", (err)=>{
+		print(err);
+	});
 }
 
 exports.tick = function(){
