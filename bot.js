@@ -130,6 +130,7 @@ bot.on("ready", async () => {
 				welcomechannel: txtchannelIDs[guildIDs[j]][0],
 				leavechannel: txtchannelIDs[guildIDs[j]][0],
 				adminchannel: txtchannelIDs[guildIDs[j]][0],
+				birthdaychannel: txtchannelIDs[guildIDs[j]][0],
 				twitchchannel: txtchannelIDs[guildIDs[j]][0],
 				touretteschannel: voicechannelIDs[guildIDs[j]][0],
 				afkchannel: voicechannelIDs[guildIDs[j]][voicechannelIDs[guildIDs[j]].length - 1],
@@ -293,6 +294,32 @@ bot.on("ready", async () => {
 	}, 55000);
 
 	bot.setInterval(() => {
+		const today = new Date()
+		for(let i in bot.birthdays){
+			let birthdate = new Date(bot.birthdays[i].date)
+			let isToday = birthdate.getDate() == today.getDate() && birthdate.getMonth() == today.getMonth()
+			if(isToday && !bot.birthdays[i].announcedcurrentyear){
+				bot.guilds.cache.forEach(async g => {
+					if(g.id != 209104845859323906) return
+					if(g.member(i)){
+						let birthdayembed = new Discord.MessageEmbed()
+							.setDescription(`------- HAPPY BIRTHDAY IDIOT! -------`)
+							.setColor("#FFFFFF")
+							.addField(`HAPPY BIRTHDAY TO:`, `<@${i}>! They've turned ${today.getYear()-birthdate.getYear()} today!`)
+							.setThumbnail(`https://media0.giphy.com/media/3ohs7W7ACsSvyY5WoM/giphy.gif?cid=ecf05e47429a0b8f63f6c00644641f2b32c90d0c698f9821&rid=giphy.gif`)
+							.setImage("https://media3.giphy.com/media/yoJC2GnSClbPOkV0eA/giphy.gif?cid=ecf05e4779f91cd2c5c9f07f334066e346b6006d9edd35aa&rid=giphy.gif")
+
+						g.channels.cache.get(bot.guildSettings[g.id].birthdaychannel).send(`Shameless @everyone ping!`,birthdayembed)
+					}
+				})
+				bot.birthdays[i].announcedcurrentyear = true;
+			}else if(!isToday){
+				bot.birthdays[i].announcedcurrentyear = false;
+			}
+		}
+	}, 65000);
+
+	bot.setInterval(() => {
 		for(let i in bot.mutes){
 			let time = bot.mutes[i].time;
 			let guildId = bot.mutes[i].guild;
@@ -448,6 +475,7 @@ bot.on("guildCreate", guild => {
 		welcomechannel: txtchannelIDs[0],
 		leavechannel: txtchannelIDs[0],
 		adminchannel: txtchannelIDs[0],
+		birthdaychannel: txtchannelIDs[0],
 		twitchchannel: txtchannelIDs[0],
 		touretteschannel: voicechannelIDs[0],
 		afkchannel: voicechannelIDs[voicechannelIDs.length - 1],
@@ -517,7 +545,7 @@ bot.on("guildMemberRemove", async (member) => {
 			if (!kickReason || kickReason == "") kickReason = "No Reason Specified."
 
 			let kickEmbed = new Discord.MessageEmbed()
-				.setDescription(`--- ${kickReason.toUpperCase()}: ---`)
+				.setDescription(`--- ${leavetype.toUpperCase()}: ---`)
 				.setColor((entry.action == "MEMBER_KICK") ? "#ffff00" : "#FF0000")
 				.addField(`${leavetype} user:`, `${member} (${member.displayName}) with ID of ${member.id}`)
 				.addField(`${leavetype} by:`, `${entry.executor}`)
