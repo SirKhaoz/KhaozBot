@@ -308,7 +308,6 @@ bot.on("ready", async () => {
 							.addField(`HAPPY BIRTHDAY TO:`, `<@${i}>! They've turned ${today.getYear()-birthdate.getYear()} today!`)
 							.setThumbnail(`https://media0.giphy.com/media/3ohs7W7ACsSvyY5WoM/giphy.gif?cid=ecf05e47429a0b8f63f6c00644641f2b32c90d0c698f9821&rid=giphy.gif`)
 							.setImage("https://media3.giphy.com/media/yoJC2GnSClbPOkV0eA/giphy.gif?cid=ecf05e4779f91cd2c5c9f07f334066e346b6006d9edd35aa&rid=giphy.gif")
-
 						g.channels.cache.get(bot.guildSettings[g.id].birthdaychannel).send(`Shameless @everyone ping!`,birthdayembed)
 					}
 				})
