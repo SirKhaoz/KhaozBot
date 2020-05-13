@@ -84,6 +84,10 @@ module.exports.run = async (bot, message, args) => {
 		bot.guildSettings[message.guild.id].adminchannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the admin/events channel, for this server.`);
 	}
+	else if(args[0] == "birthdaychannel"){
+		bot.guildSettings[message.guild.id].birthdaychannel = message.channel.id;
+		message.reply(`I have set ${message.channel} as the birthday announce channel, for this server.`);
+	}
 	else if(args[0] == "leaguechannel"){
 		bot.guildSettings[message.guild.id].bdochannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the league channel, for this server.`);
@@ -267,6 +271,7 @@ module.exports.run = async (bot, message, args) => {
 
 		message.channel.send(`**!set musicchannel** - sets the music channel of the server, to move commands that user\'s enter (music bot related), to this channel.\n\
 **!set adminchannel** - sets the admin/events channel of the server, to display admin/event notifications, to this channel.\n\
+**!set birthdaychannel** - sets the birthday announce channel of the server, to this channel.\n\
 **!set leaguechannel** - sets the league channel of the server, to paste automatic game updates, news etc, to this channel.\n\
 **!set bdochannel** - sets the BDO channel of the server, to post news, timers and BDO related commands, to this channel.\n\
 **!set bdobossping** - sets the BDO boss pings to true/false.\n\

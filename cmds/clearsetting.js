@@ -64,6 +64,10 @@ module.exports.run = async (bot, message, args) => {
 		bot.guildSettings[message.guild.id].adminchannel = txtchannelIDs[0];
 		message.reply(`I have cleared the admin commands channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
 	}
+	else if(args[0] == "birthdaychannel"){
+		bot.guildSettings[message.guild.id].birthdaychannel = txtchannelIDs[0];
+		message.reply(`I have cleared the birthday announce channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
+	}
 	else if(args[0] == "leaguechannel"){
 		bot.guildSettings[message.guild.id].leaguechannel = txtchannelIDs[0];
 		message.reply(`I have cleared the league channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
