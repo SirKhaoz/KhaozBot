@@ -19,7 +19,7 @@ module.exports.run = async (bot, message, args, movechannel) => {
 		}
 	}else if(user){
 		if(!bot.bdoplayers[user.id]){
-			return message.reply(user + " has not logged any gear in the database.");
+			return message.reply(`<@${user}> has not logged any gear in the database.`);
 		}else{
 			return message.reply(`Showing gear of ${user},`, {files: [{
 				attachment: `${bot.bdoplayers[user.id].gearpic}`,
