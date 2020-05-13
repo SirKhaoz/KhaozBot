@@ -8,6 +8,7 @@ module.exports.run = async (bot, message, args) => {
 6. Update twitch bot to cache user information to reduce api calls (display pics etc)\n\
 7. Text level up? Like mee6 bot\n\
 8. Stop 'maintenance' from showing up twice on boss timer\n\
+9. Update !help to dynamically adjust for max size, display in nice code block??\n\
 \`\`\``);
 }
 

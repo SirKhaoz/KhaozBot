@@ -3,7 +3,7 @@
       "guildID": "209104845859323906",
       "defaultchannel": "668052797811589140",
       "adminchannel": "637380710897942528",
-      "twitchchannel": "704130799867396096",
+      "twitchchannel": "452621841190748170",
       "touretteschannel": "209104846362509312",
       "botchannel": "637383895360339989",
       "leaguechannel": "667995980251136010",
@@ -380,12 +380,54 @@
             "name": "driftynz",
             "id": "39765777",
             "timestamp": 1589190677620,
-            "online": true
+            "online": false
          },
          {
             "name": "bsampson_",
             "id": "234216421",
             "timestamp": 1589182842302,
+            "online": false
+         },
+         {
+            "name": "zatanaa",
+            "id": "129149949",
+            "timestamp": 1589200063454,
+            "online": false
+         },
+         {
+            "name": "peetang",
+            "id": "54028906",
+            "timestamp": 0,
+            "online": false
+         },
+         {
+            "name": "LarryFish",
+            "id": "36781883",
+            "timestamp": 1589206663681,
+            "online": false
+         },
+         {
+            "name": "complicated_gaming",
+            "id": "129516333",
+            "timestamp": 0,
+            "online": false
+         },
+         {
+            "name": "thesenseiswift",
+            "id": "26761129",
+            "timestamp": 0,
+            "online": false
+         },
+         {
+            "name": "nzberserk1",
+            "id": "49330095",
+            "timestamp": 0,
+            "online": false
+         },
+         {
+            "name": "koroshuu",
+            "id": "169794949",
+            "timestamp": 0,
             "online": false
          }
       ],
