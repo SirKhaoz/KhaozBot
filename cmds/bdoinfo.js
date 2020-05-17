@@ -29,11 +29,6 @@ https://incendar.com/bdoalchemyrecipes.php`, {files: [{
 		message.channel.send(`**Useful BDO Knowledge-Locator Tool:**\n\
 		https://grumpygreen.cricket/old-site/bdo-knowledge-locator.html`)
 	} else if(args[0] == "6"){
-		message.channel.send(`**Party Combat EXP Information:**`, {files: [{
-			attachment: `./resources/bdoinfo/combatxpinfo.png`,
-			name: `Party Combat EXP Information.png`
-		}]});
-	} else if(args[0] == "7"){
 		message.channel.send(`**Unlimited Potion Information:**`, {files: [{
 			attachment: `./resources/bdoinfo/unlimitedpotionmats.png`,
 			name: `Unlimited Potion Information.png`
@@ -41,6 +36,11 @@ https://incendar.com/bdoalchemyrecipes.php`, {files: [{
 		message.channel.send(`**Unlimited Potion *EVENT* Information:**`, {files: [{
 			attachment: `./resources/bdoinfo/unlimitedpotionmats-event.png`,
 			name: `Unlimited Potion EVENT Information.png`
+		}]});
+	} else if(args[0] == "7"){
+		message.channel.send(`**Information on how to change your BDO font:**`, {files: [{
+			attachment: `./resources/bdoinfo/fontchange.png`,
+			name: `Font Change Information.png`
 		}]});
 	} else if (args[0] == "8") {
 		message.reply("Bro **str8 up**, get off my back, I'm working on this.")
@@ -54,7 +54,7 @@ https://incendar.com/bdoalchemyrecipes.php`, {files: [{
 **Adventure Logs/Books:**\n\
 4. Bartalibooks\n\
 **Progression:**\n\
-5. Knowledge\n\
+5. Knowledge Locatior Tool\n\
 6. Unlimited Potions\n\
 **Misc:**\n\
 7. Fonts\n\
