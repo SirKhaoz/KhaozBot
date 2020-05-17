@@ -36,7 +36,7 @@ https://grumpygreen.cricket/old-site/bdo-knowledge-locator.html`)
 } else if (args[0] == "7") {
 		message.reply("Bro **str8 up**, get off my back, I'm working on this.")
 	}  else {
-		let msg = await message.reply(`Please enter a valid option (**type a number only, ie. \`!bdoinfo 1**\`). The options to chose from are:\n\
+		let msg = await message.reply(`Please enter a valid option (**type a number only, ie.** \`!bdoinfo 1\`). The options to chose from are:\n\
 **Gear & Leveling:**\n\
 1. Brackets\n\
 2. Party combat EXP information\n\
@@ -47,7 +47,7 @@ https://grumpygreen.cricket/old-site/bdo-knowledge-locator.html`)
 **Misc:**\n\
 6. Fonts\n\
 7. TODO`);
-		msg.delete({timeout:14000});
+		msg.delete({timeout:25000});
 		return;
 	}
 }
