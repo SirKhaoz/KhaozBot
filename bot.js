@@ -409,6 +409,7 @@ bot.on("ready", async () => {
 	}, 30000);
 
 	bot.setInterval(() => {
+		console.log("Saved messages contains:", bot.savedmessages.messages.length)
 		bot.savedmessages.messages.forEach(async message => {
 			//1209600000 = 2 weeks in MS
 			if((Date.now() - message.timestamp) > 1209600000){
@@ -421,7 +422,7 @@ bot.on("ready", async () => {
 						try{
 							await channel.messages.fetch(message.id).then(m => {
 								console.log("Found message: " + m);
-								m.delete({timeout: 10000,reason:"auto-purged"}).then(m => {
+								m.delete({timeout: 5000,reason:"auto-purged"}).then(m => {
 									console.log("Deleted message: " + m);
 									let arraypos = bot.savedmessages.messages.indexOf(message);
 									bot.savedmessages.messages.splice(arraypos, 1);
@@ -429,6 +430,7 @@ bot.on("ready", async () => {
 							});
 						}catch(e){
 							if(e.httpStatus = 404){
+								console.error(e);
 								console.log("Message already deleted, removing from savedmessages.")
 								let arraypos = bot.savedmessages.messages.indexOf(message);
 								bot.savedmessages.messages.splice(arraypos, 1);
@@ -448,7 +450,7 @@ bot.on("ready", async () => {
 				}
 			}
 		})
-	}, 75000)
+	}, 48000)
 
 	try{
 		let link = await bot.generateInvite(["ADMINISTRATOR"]);
