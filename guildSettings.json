@@ -2,6 +2,16 @@
    "209104845859323906": {
       "guildID": "209104845859323906",
       "defaultchannel": "668052797811589140",
+      "joinmessage": {
+         "send": true,
+         "channel": "668052797811589140",
+         "message": "Welcome to the server {{{user}}}... check out <#667993124534222849> to get started."
+      },
+      "leavemessage": {
+         "send": true,
+         "channel": "668052797811589140",
+         "message": "Rip, cy@ nerd, {{{user}}} has left."
+      },
       "adminchannel": "637380710897942528",
       "twitchchannel": "452621841190748170",
       "touretteschannel": "209104846362509312",
@@ -32,8 +42,6 @@
       "queue": [],
       "botVolume": 0.1,
       "repeat": false,
-      "joinmessage": "Welcome to the server {{{user}}}... check out <#667993124534222849> to get started.",
-      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
       "musicchannel": "637383763776765972",
       "afkchannel": "222497152054591491",
       "rolemessage": {
@@ -150,13 +158,23 @@
             "muraka": true
          }
       },
-      "leavechannel": "668052797811589140",
       "birthdaychannel": "668052797811589140"
    },
    "375195759622225932": {
       "guildID": "375195759622225932",
       "defaultchannel": "375195759622225934",
+      "joinmessage": {
+         "send": true,
+         "channel": "375195759622225934",
+         "message": "Henri welcomes you to NIIGA, {{{user}}}"
+      },
+      "leavemessage": {
+         "send": true,
+         "channel": "375195759622225934",
+         "message": "Rip, cy@ nerd, {{{user}}} has left."
+      },
       "adminchannel": "375195759622225934",
+      "birthdaychannel": "375195759622225934",
       "twitchchannel": "454208730955907073",
       "touretteschannel": "399178026639949825",
       "botchannel": "399178026639949825",
@@ -171,8 +189,6 @@
       "queue": [],
       "botVolume": "0.3",
       "repeat": false,
-      "joinmessage": "Henri welcomes you to NIIGA, {{{user}}}",
-      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
       "musicchannel": "376641030117916674",
       "afkchannel": "375214550380969985",
       "rolemessage": {
@@ -218,7 +234,18 @@
    "568929512092336129": {
       "guildID": "568929512092336129",
       "defaultchannel": "568947602440192010",
+      "joinmessage": {
+         "send": true,
+         "channel": "568947602440192010",
+         "message": "- Welcome to the Faceless Server {{{user}}} , hang tight and do not log out of discord until you have been assigned your applicant role.  If you do though, you can always use the link to join back."
+      },
+      "leavemessage": {
+         "send": true,
+         "channel": "568947602440192010",
+         "message": "Rip, cy@ nerd, {{{user}}} has left."
+      },
       "twitchchannel": "568929839604695040",
+      "birthdaychannel": "568947602440192010",
       "touretteschannel": null,
       "afkchannel": null,
       "botchannel": "570408469782331392",
@@ -234,8 +261,6 @@
       "repeat": false,
       "autopurge": false,
       "autopurgechannels": [],
-      "joinmessage": "- Welcome to the Faceless Server {{{user}}} , hang tight and do not log out of discord until you have been assigned your applicant role.  If you do though, you can always use the link to join back.",
-      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
       "adminchannel": "570420148478017538",
       "rolemessage": {
          "messageid": null,
@@ -280,7 +305,18 @@
    "570566768469344259": {
       "guildID": "570566768469344259",
       "defaultchannel": "570566768469344265",
+      "joinmessage": {
+         "send": true,
+         "channel": "570666941820305409",
+         "message": "Welcome, {{{user}}}! Please **read** and **follow** the instructions above so a Marquis  or Other Alliance Leader can get a role sorted for you."
+      },
+      "leavemessage": {
+         "send": true,
+         "channel": "570566768469344265",
+         "message": "Rip, cy@ nerd, {{{user}}} has left."
+      },
       "twitchchannel": "575268677910528008",
+      "birthdaychannel": "570566768469344265",
       "touretteschannel": "575127466033676298",
       "afkchannel": "575729735359922176",
       "botchannel": "575268677910528008",
@@ -296,10 +332,6 @@
       "queue": [],
       "botVolume": "0.3",
       "repeat": false,
-      "joinmessage": "Welcome, {{{user}}}! Please **read** and **follow** the instructions above so a Marquis  or Other Alliance Leader can get a role sorted for you.",
-      "leavemessage": "{{{user}}} has left the server.",
-      "welcomechannel": "570666941820305409",
-      "leavechannel": "570566768469344265",
       "adminchannel": "580189893926453248",
       "rolemessage": {
          "messageid": null,
@@ -344,9 +376,18 @@
    "444260557319569439": {
       "guildID": "444260557319569439",
       "defaultchannel": "444260557319569441",
-      "welcomechannel": "444260557319569441",
-      "leavechannel": "444260557319569441",
+      "joinmessage": {
+         "send": true,
+         "channel": "444260557319569441",
+         "message": "Welcome to the server... {{{user}}}"
+      },
+      "leavemessage": {
+         "send": true,
+         "channel": "444260557319569441",
+         "message": "Rip, cy@ nerd, {{{user}}} has left."
+      },
       "twitchchannel": "708051468497715250",
+      "birthdaychannel": "444260557319569441",
       "touretteschannel": "447995783921401866",
       "afkchannel": "444261118945525770",
       "botchannel": "708219198798692352",
@@ -440,8 +481,6 @@
       "queue": [],
       "botVolume": "0.3",
       "repeat": false,
-      "joinmessage": "Welcome to the server... {{{user}}}",
-      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
       "rolemessage": {
          "messageid": null,
          "channelid": null,
@@ -466,9 +505,18 @@
    "701134183736541195": {
       "guildID": "701134183736541195",
       "defaultchannel": "701134183736541198",
-      "welcomechannel": "701134183736541198",
-      "leavechannel": "701134183736541198",
+      "joinmessage": {
+         "send": true,
+         "channel": "701134183736541198",
+         "message": "Welcome to the server... {{{user}}}"
+      },
+      "leavemessage": {
+         "send": true,
+         "channel": "701134183736541198",
+         "message": "Rip, cy@ nerd, {{{user}}} has left."
+      },
       "twitchchannel": "701134183736541198",
+      "birthdaychannel": "701134183736541198",
       "touretteschannel": "703201535512936508",
       "afkchannel": "703201535512936508",
       "botchannel": "705565332072562725",
@@ -479,10 +527,10 @@
          "sendpings": true,
          "roles": [],
          "bosstimerchannel": "705565332072562725",
-         "sendschedule": false,
+         "sendschedule": true,
          "lastmessage": {
-            "id": null,
-            "channel": null
+            "id": "714238755854090342",
+            "channel": "705565332072562725"
          },
          "bosses": {
             "kzarka": true,
@@ -505,8 +553,6 @@
       "queue": [],
       "botVolume": "0.3",
       "repeat": false,
-      "joinmessage": "Welcome to the server... {{{user}}}",
-      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
       "rolemessage": {
          "messageid": null,
          "channelid": null,
@@ -529,8 +575,16 @@
    "616971615334432799": {
       "guildID": "616971615334432799",
       "defaultchannel": "617084902864715776",
-      "welcomechannel": "713244038882656352",
-      "leavechannel": "617075168195641354",
+      "joinmessage": {
+         "send": true,
+         "channel": "713244038882656352",
+         "message": "Welcome to the server... {{{user}}}"
+      },
+      "leavemessage": {
+         "send": true,
+         "channel": "713244038882656352",
+         "message": "Rip, cy@ nerd, {{{user}}} has left."
+      },
       "adminchannel": "617075168195641354",
       "birthdaychannel": "617075168195641354",
       "twitchchannel": "617075168195641354",
@@ -570,8 +624,77 @@
       "queue": [],
       "botVolume": "0.3",
       "repeat": false,
-      "joinmessage": "Welcome to the server... {{{user}}}",
-      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
+      "rolemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": null,
+         "pmremove": null,
+         "roles": []
+      },
+      "welcomemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": "{{{emoji}}}  Welcome to {{{servername}}}!  {{{emoji}}}",
+         "pmremove": "{{{emoji}}}  you have left {{{servername}}}.  {{{emoji}}}",
+         "anyemoji": false,
+         "emojis": [],
+         "roles": []
+      }
+   },
+   "714245218324709396": {
+      "guildID": "714245218324709396",
+      "defaultchannel": "714245218324709399",
+      "joinmessage": {
+         "send": true,
+         "channel": "714245218324709399",
+         "message": "Welcome to the server... {{{user}}}"
+      },
+      "leavemessage": {
+         "send": true,
+         "channel": "714245218324709399",
+         "message": "Rip, cy@ nerd, {{{user}}} has left."
+      },
+      "adminchannel": "714245218324709399",
+      "birthdaychannel": "714245218324709399",
+      "twitchchannel": "714245218324709399",
+      "touretteschannel": "714245218324709400",
+      "afkchannel": "714245218324709400",
+      "botchannel": "714245218324709399",
+      "musicchannel": "714245218324709399",
+      "leaguechannel": "714245218324709399",
+      "bdochannel": "714245218324709399",
+      "bdobossping": {
+         "sendpings": false,
+         "roles": [],
+         "bosstimerchannel": "714245218324709399",
+         "sendschedule": false,
+         "lastmessage": {
+            "id": null,
+            "channel": null
+         },
+         "bosses": {
+            "kzarka": true,
+            "nouver": true,
+            "kutum": true,
+            "karanda": true,
+            "vell": true,
+            "garmoth": true,
+            "offin": true,
+            "quint": true,
+            "muraka": true
+         }
+      },
+      "movecommands": false,
+      "twitchChannels": [],
+      "summonerNames": [],
+      "commandlocked": [],
+      "autopurge": false,
+      "autopurgechannels": [],
+      "queue": [],
+      "botVolume": "0.3",
+      "repeat": false,
       "rolemessage": {
          "messageid": null,
          "channelid": null,
