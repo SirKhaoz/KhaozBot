@@ -65,30 +65,36 @@ module.exports.run = async (bot, message, args) => {
 			 	msg.delete({timeout: 7000}).catch(err => console.log(err));
 			 	return;
 			}
+
 			fetchVideoInfo(id, (err, videoInfo) => {
-				if(err) throw new Error(err);
+				if(err) {
+					console.log("ERROR:")
+					throw new Error(err);
+					return message.reply("Unable to play this song. This is *probably* **unrelated** to a regional error.")
+				}
+
+				if(!videoInfo.regionsAllowed.includes("NZ")) return message.reply("Unable to play this song. This is most likley due to a regional error :(\nThe bot is hosted via VPS in *New Zealand*.")
 
 				if(bot.guildSettings[message.guild.id].queue.length > 0 || bot.musicguilds[message.guild.id].isPlaying){
-			    	if (isYoutube(id)) {
-				        bot.guildSettings[message.guild.id].queue.push({id: getYouTubeID(id), name: videoInfo.title});
-				    	message.reply(` added to queue **${videoInfo.title}**\nYou searched for: "${args[0]}"\nhttps://www.youtube.com/watch?v=${id}`);
-				    } else {
-				        bot.guildSettings[message.guild.id].queue.push({id: id, name: videoInfo.title});
-				    	message.reply(` added to queue **${videoInfo.title}**\nhttps://www.youtube.com/watch?v=${id}`);
-				    }
+		    	if (isYoutube(id)) {
+			      bot.guildSettings[message.guild.id].queue.push({id: getYouTubeID(id), name: videoInfo.title});
+			    	message.reply(` added to queue **${videoInfo.title}**\nYou searched for: "${args[0]}"\nhttps://www.youtube.com/watch?v=${id}`);
+			    } else {
+						bot.guildSettings[message.guild.id].queue.push({id: id, name: videoInfo.title});
+			    	message.reply(` added to queue **${videoInfo.title}**\nhttps://www.youtube.com/watch?v=${id}`);
+			    }
 				}
 				else {
 					playMusic(id, message);
 					bot.musicguilds[message.guild.id].isPlaying = true;
 					if (isYoutube(id)) {
-				        bot.guildSettings[message.guild.id].queue.push({id: getYouTubeID(id), name: videoInfo.title});
-				    	message.reply(` now Playing **${videoInfo.title}**\nYou searched for: "${args[0]}"\nhttps://www.youtube.com/watch?v=${id}`);
-				    } else {
-				        bot.guildSettings[message.guild.id].queue.push({id: id, name: videoInfo.title});
-				    	message.reply(` now Playing **${videoInfo.title}**\nhttps://www.youtube.com/watch?v=${id}`);
-				    }
+			    	bot.guildSettings[message.guild.id].queue.push({id: getYouTubeID(id), name: videoInfo.title});
+			   		message.reply(` now Playing **${videoInfo.title}**\nYou searched for: "${args[0]}"\nhttps://www.youtube.com/watch?v=${id}`);
+			    } else {
+			    	bot.guildSettings[message.guild.id].queue.push({id: id, name: videoInfo.title});
+						message.reply(` now Playing **${videoInfo.title}**\nhttps://www.youtube.com/watch?v=${id}`);
+			    }
 				}
-
 			});
 		});
 	}
