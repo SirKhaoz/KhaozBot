@@ -30,7 +30,7 @@
          "705195517453402193"
       ],
       "queue": [],
-      "botVolume": 0.09,
+      "botVolume": 0.1,
       "repeat": false,
       "joinmessage": "Welcome to the server {{{user}}}... check out <#667993124534222849> to get started.",
       "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
@@ -497,6 +497,71 @@
          }
       },
       "movecommands": false,
+      "twitchChannels": [],
+      "summonerNames": [],
+      "commandlocked": [],
+      "autopurge": false,
+      "autopurgechannels": [],
+      "queue": [],
+      "botVolume": "0.3",
+      "repeat": false,
+      "joinmessage": "Welcome to the server... {{{user}}}",
+      "leavemessage": "Rip, cy@ nerd, {{{user}}} has left.",
+      "rolemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": null,
+         "pmremove": null,
+         "roles": []
+      },
+      "welcomemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": "{{{emoji}}}  Welcome to {{{servername}}}!  {{{emoji}}}",
+         "pmremove": "{{{emoji}}}  you have left {{{servername}}}.  {{{emoji}}}",
+         "anyemoji": false,
+         "emojis": [],
+         "roles": []
+      }
+   },
+   "616971615334432799": {
+      "guildID": "616971615334432799",
+      "defaultchannel": "617084902864715776",
+      "welcomechannel": "713244038882656352",
+      "leavechannel": "617075168195641354",
+      "adminchannel": "617075168195641354",
+      "birthdaychannel": "617075168195641354",
+      "twitchchannel": "617075168195641354",
+      "touretteschannel": "616971615799869443",
+      "afkchannel": "697022989656653895",
+      "botchannel": "713247170739830846",
+      "musicchannel": "713244580363108394",
+      "leaguechannel": "617075168195641354",
+      "bdochannel": "617075168195641354",
+      "bdobossping": {
+         "sendpings": true,
+         "roles": [],
+         "bosstimerchannel": "713247277073825833",
+         "sendschedule": true,
+         "lastmessage": {
+            "id": "713248449952350319",
+            "channel": "713247277073825833"
+         },
+         "bosses": {
+            "kzarka": true,
+            "nouver": true,
+            "kutum": true,
+            "karanda": true,
+            "vell": true,
+            "garmoth": true,
+            "offin": true,
+            "quint": true,
+            "muraka": true
+         }
+      },
+      "movecommands": true,
       "twitchChannels": [],
       "summonerNames": [],
       "commandlocked": [],
