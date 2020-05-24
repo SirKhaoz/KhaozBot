@@ -2,15 +2,14 @@ module.exports.run = async (bot, message, args) => {
 	//Checking permissions of user requesting mute
 	if(bot.authusers[message.member.id].announce != 1) return message.reply(`You do not have permission to do this. Requires: Global announce permissions.`);
 
-
 	args[0] = args.join(" ");
 
 	console.log(`${message.author} says: ${args[0]}`);
 
 	bot.guilds.cache.forEach(async guild => {
-		let channel = guild.channels.cache.filter(c => c.id == bot.guildSettings[guild.id].defaultchannel).first();
+		let channel = guild.channels.cache.get(bot.guildSettings[guild.id].defaultchannel);
 
-		let msg = await channel.send(`${message.author} says: ${args[0]}\n*This message will remain until deleted by a server.*`);
+		channel.send(`${message.author} says: ${args[0]}\n*This message will remain until deleted by an admin.*`);
 	});
 	//message.author
 
