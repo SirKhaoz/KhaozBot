@@ -20,11 +20,11 @@ module.exports.run = async (bot, message, args) => {
 		message.reply(`I have cleared the default channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
 	}
 	else if(args[0] == "joinchannel"){
-		bot.guildSettings[message.guild.id].welcomechannel = txtchannelIDs[0];
+		bot.guildSettings[message.guild.id].joinmessage.channel = txtchannelIDs[0];
 		message.reply(`I have cleared the join message channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
 	}
 	else if(args[0] == "leavechannel"){
-		bot.guildSettings[message.guild.id].leavechannel = txtchannelIDs[0];
+		bot.guildSettings[message.guild.id].leavemessage.channel = txtchannelIDs[0];
 		message.reply(`I have cleared the leave message channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
 	}
 	else if(args[0] == "twitchchannel"){
@@ -105,12 +105,12 @@ module.exports.run = async (bot, message, args) => {
 			message.reply(`I have cleared all auto-purge exempt channels. All **new** messages in any channel will be purged after 14 days.`);
 	}
 	else if(args[0] == "joinmessage"){
-		bot.guildSettings[message.guild.id].welcomemessage = "Welcome to the server... {{{user}}}";
-		message.reply(`I have set the welcome message back to the default of: ${bot.guildSettings[message.guild.id].welcomemessage}.`);
+		bot.guildSettings[message.guild.id].joinmessage.message = "Welcome to the server... {{{user}}}";
+		message.reply(`I have set the user join message back to the default of: ${bot.guildSettings[message.guild.id].joinmessage.message}.`);
 	}
 	else if(args[0] == "leavemessage"){
-		bot.guildSettings[message.guild.id].leavemessage = "Rip, cy@ nerd, {{{user}}} has left.";
-		message.reply(`I have set the welcome message back to the default of: ${bot.guildSettings[message.guild.id].leavemessage}.`);
+		bot.guildSettings[message.guild.id].leavemessage.message = "Rip, cy@ nerd, {{{user}}} has left.";
+		message.reply(`I have set the user leave message back to the default of: ${bot.guildSettings[message.guild.id].leavemessage.message}.`);
 	}
 	else if(args[0] == "setupmessage"){
 		if(args[1] == "welcome"){

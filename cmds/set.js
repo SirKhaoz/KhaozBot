@@ -23,11 +23,11 @@ module.exports.run = async (bot, message, args) => {
 		message.reply(`I have set ${message.channel} as the default channel, for this server.`);
 	}
 	else if(args[0] == "joinchannel"){
-		bot.guildSettings[message.guild.id].welcomechannel = message.channel.id;
+		bot.guildSettings[message.guild.id].joinmessage.channel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the join message channel, for this server.`);
 	}
 	else if(args[0] == "leavechannel"){
-		bot.guildSettings[message.guild.id].leavechannel = message.channel.id;
+		bot.guildSettings[message.guild.id].leavemessage.channel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the leave message channel, for this server.`);
 	}
 	else if(args[0] == "twitchchannel"){
@@ -145,14 +145,14 @@ module.exports.run = async (bot, message, args) => {
 	else if(args[0] == "joinmessage"){
 		let joinmessage = args.slice(1);
 		joinmessage = joinmessage.join(" ");
-		bot.guildSettings[message.guild.id].joinmessage = joinmessage;
-		message.reply(`I have set the welcome message to:\n${bot.guildSettings[message.guild.id].joinmessage}`)
+		bot.guildSettings[message.guild.id].joinmessage.message = joinmessage;
+		message.reply(`I have set the user join message to:\n${bot.guildSettings[message.guild.id].joinmessage}`)
 	}
 	else if(args[0] == "leavemessage"){
 		let leavemessage = args.slice(1);
 		leavemessage = leavemessage.join(" ");
-		bot.guildSettings[message.guild.id].leavemessage = leavemessage;
-		message.reply(`I have set the leave message to:\n${bot.guildSettings[message.guild.id].leavemessage}`)
+		bot.guildSettings[message.guild.id].leavemessage.message = leavemessage;
+		message.reply(`I have set the user leave message to:\n${bot.guildSettings[message.guild.id].leavemessage}`)
 	}
 	else if(args[0] == "setupmessage"){
 		if(args[1] == "welcome"){

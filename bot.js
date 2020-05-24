@@ -127,8 +127,8 @@ bot.on("ready", async () => {
 			bot.guildSettings[guildIDs[j]] = {
 				guildID: guildIDs[j],
 				defaultchannel: txtchannelIDs[guildIDs[j]][0],
-				welcomechannel: txtchannelIDs[guildIDs[j]][0],
-				leavechannel: txtchannelIDs[guildIDs[j]][0],
+				joinmessage: {send: true, channel: txtchannelIDs[guildIDs[j]][0], message: "Welcome to the server... {{{user}}}"},
+				leavemessage: {send: true, channel: txtchannelIDs[guildIDs[j]][0], message: "Rip, cy@ nerd, {{{user}}} has left."},
 				adminchannel: txtchannelIDs[guildIDs[j]][0],
 				birthdaychannel: txtchannelIDs[guildIDs[j]][0],
 				twitchchannel: txtchannelIDs[guildIDs[j]][0],
@@ -148,8 +148,6 @@ bot.on("ready", async () => {
 				queue: [],
 				botVolume: botSettings.volume,
 				repeat: false,
-				joinmessage: "Welcome to the server... {{{user}}}",
-				leavemessage: "Rip, cy@ nerd, {{{user}}} has left.",
 				rolemessage: {messageid: null, channelid: null, messagebody: null, pmadd: null, pmremove: null, roles: []},
 				welcomemessage: {messageid: null, channelid: null, messagebody: null, pmadd: "{{{emoji}}}  Welcome to {{{servername}}}!  {{{emoji}}}", pmremove: "{{{emoji}}}  you have left {{{servername}}}.  {{{emoji}}}",anyemoji: false, emojis: [], roles: []}
 			}
@@ -475,8 +473,8 @@ bot.on("guildCreate", guild => {
     bot.guildSettings[guild.id] = {
 		guildID: guild.id,
 		defaultchannel: txtchannelIDs[0],
-		welcomechannel: txtchannelIDs[0],
-		leavechannel: txtchannelIDs[0],
+		joinmessage: {send: true, channel: txtchannelIDs[0], message: "Welcome to the server... {{{user}}}"},
+		leavemessage: {send: true, channel: txtchannelIDs[0], message: "Rip, cy@ nerd, {{{user}}} has left."},
 		adminchannel: txtchannelIDs[0],
 		birthdaychannel: txtchannelIDs[0],
 		twitchchannel: txtchannelIDs[0],
@@ -496,8 +494,6 @@ bot.on("guildCreate", guild => {
 		queue: [],
 		botVolume: botSettings.volume,
 		repeat: false,
-		joinmessage: "Welcome to the server... {{{user}}}",
-		leavemessage: "Rip, cy@ nerd, {{{user}}} has left.",
 		rolemessage: {messageid: null, channelid: null, messagebody: null, pmadd: null, pmremove: null, roles: []},
 		welcomemessage: {messageid: null, channelid: null, messagebody: null, pmadd: "{{{emoji}}}  Welcome to {{{servername}}}!  {{{emoji}}}", pmremove: "{{{emoji}}}  you have left {{{servername}}}.  {{{emoji}}}",anyemoji: false, emojis: [], roles: []}
 	}
@@ -520,15 +516,15 @@ bot.on("guildDelete", guild => {
 bot.on("guildMemberAdd", (member) => {
 	try{
 		let channel;
-		if (bot.guildSettings[member.guild.id].welcomechannel) {
-			channel = member.guild.channels.cache.filter(c => c.id == bot.guildSettings[member.guild.id].welcomechannel).first();
+		if (bot.guildSettings[member.guild.id].joinmessage.channel) {
+			channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].joinmessage.channel);
 		}
 		else if (bot.guildSettings[member.guild.id].defaultchannel) {
 			channel = member.guild.channels.cache.filter(c => c.id == bot.guildSettings[member.guild.id].defaultchannel).first();
 		} else {
 			channel = member.guild.channels.cache.filter(c => c.type === 'text' && c.permissionsFor(member.guild.me).has(["SEND_MESSAGES", "EMBED_LINKS", "VIEW_CHANNEL"])).sort((a, b) => a.calculatedPosition - b.calculatedPosition).first();
 		}
-		let joinmessage = bot.guildSettings[member.guild.id].joinmessage.replace(/{{{user}}}/gi, `<@${member.id}>`);
+		let joinmessage = bot.guildSettings[member.guild.id].joinmessage.message.replace(/{{{user}}}/gi, `<@${member.id}>`);
 		channel.send(joinmessage);
 	}catch(e){
 		console.error(e);
@@ -561,15 +557,15 @@ bot.on("guildMemberRemove", async (member) => {
 		}
 
 		let channel;
-		if (bot.guildSettings[member.guild.id].leavechannel) {
-			channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].leavechannel);
+		if (bot.guildSettings[member.guild.id].leavemessage.channel) {
+			channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].leavemessage.channel);
 		}
 		else if (bot.guildSettings[member.guild.id].defaultchannel) {
 			channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].defaultchannel);
 		} else {
 			channel = member.guild.channels.cache.filter(c => c.type === 'text' && c.permissionsFor(member.guild.me).has(["SEND_MESSAGES", "EMBED_LINKS", "VIEW_CHANNEL"])).sort((a, b) => a.calculatedPosition - b.calculatedPosition).first();
 		}
-		let leavemessage = bot.guildSettings[member.guild.id].leavemessage.replace(/{{{user}}}/gi, `${member.user} (${member.displayName})`);
+		let leavemessage = bot.guildSettings[member.guild.id].leavemessage.message.replace(/{{{user}}}/gi, `${member.user} (*${member.displayName}*)`);
 		channel.send(`**(${leavetype})** - ${leavemessage}`).then(m => m.react("👋"));
 
 		let pmmessage = null;
