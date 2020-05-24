@@ -37,7 +37,7 @@ module.exports.run = async (bot, message, args) => {
 			message2 += tempMessage;
 		}
 		else {
-			message2 += "```";
+			message2 += "```md";
 			message2 += repeatStatus;
 			message.channel.send(message2);
 			message2 = "```";
