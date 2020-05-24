@@ -269,6 +269,8 @@ bot.on("ready", async () => {
 			let nextmessage = "Next boss:";
 			let singlebosses = [];
 
+			data = getUniqueArray(data, []) //remove duplicates
+
 			singlebosses.push(data[0]);
 			data.shift();
 
@@ -800,6 +802,21 @@ function indexOfObjectByName(array, value){
         }
     }
     return -1;
+}
+
+function getUniqueArray(arr=[], compareProps=[]) {
+	let modifiedArray= [];
+	if(compareProps.length === 0 && arr.length > 0) compareProps.push(...Object.keys(arr[0]));
+	arr.map(item=> {
+		if(modifiedArray.length === 0){
+			modifiedArray.push(item);
+		} else {
+			if(!modifiedArray.some(item2=> compareProps.every(eachProps=> item2[eachProps] === item[eachProps]))){
+				modifiedArray.push(item);
+			}
+		}
+	 });
+	 return modifiedArray;
 }
 
 function capitalize(string) {
