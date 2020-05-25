@@ -1,5 +1,5 @@
 module.exports.run = async (bot, message, args) => {
-	let toRemind = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[args.length-1]);
+	let toRemind = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[args.length-1]);
 	let time;
 	if(toRemind){
 		if(!args[1] || /[^\d]/.test(args[1] ) || args[1]  > 1440 || args[1]  < 0.5) {
@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
 			msg.delete({timeout:7000});
 			return;
 		}
-		toRemind = message.guild.members.get(message.author.id);
+		toRemind = message.guild.members.cache.get(message.author.id);
 		time = args.shift();
 	}
 
