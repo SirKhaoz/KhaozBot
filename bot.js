@@ -577,20 +577,26 @@ bot.on("guildMemberRemove", async (member) => {
 		if(entry.action == "MEMBER_BAN_ADD") midmessage = "been banned from"
 		if(bot.guildSettings[member.guild.id].welcomemessage.messageid){
 			let channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].welcomemessage.channelid);
-			channel.messages.fetch(bot.guildSettings[member.guild.id].welcomemessage.messageid).then(msg => {
-		    	msg.reactions.cache.forEach(async r => {
-			    	r.remove(member.id);
-		    	});
-		    	pmmessage = (`Your **welcome** roles have been stripped as you have ${midmessage} **${member.guild.name}**. You will need to re-react if you join again.`);
+			channel.messages.fetch(bot.guildSettings[member.guild.id].welcomemessage.messageid).then(async msg => {
+		    	let userReactions = await msg.reactions.cache.filter(reaction => reaction.users.cache.has(member.id));
+					try {
+						for(const reaction of userReactions.values()){
+							await reaction.users.remove(member.id);
+						}
+					} catch (e){console.error(`Failed to remove welcome reactions when leaving ${member.guild.name}.`, e)}
+					pmmessage = (`Your **welcome** roles have been stripped as you have ${midmessage} **${member.guild.name}**. You will need to re-react if you join again.`);
 			}).catch(e => console.error(e));
 		}
 		if(bot.guildSettings[member.guild.id].rolemessage.messageid){
 			let channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].rolemessage.channelid);
-			channel.messages.fetch(bot.guildSettings[member.guild.id].rolemessage.messageid).then(msg => {
-		    	msg.reactions.cache.forEach(async react => {
-			    	react.remove(member.id);
-		    	});
-		    	pmmessage += (`\nYour **self-assigned** roles have been stripped as you have ${midmessage} **${member.guild.name}**. You will need to re-react if you join again.`);
+			channel.messages.fetch(bot.guildSettings[member.guild.id].rolemessage.messageid).then(async msg => {
+				let userReactions = await msg.reactions.cache.filter(reaction => reaction.users.cache.has(member.id));
+				try {
+					for(const reaction of userReactions.values()){
+						await reaction.users.remove(member.id);
+					}
+				} catch (e){console.error(`Failed to remove role reactions when leaving ${member.guild.name}.`, e)}
+		    pmmessage += (`\nYour **self-assigned** roles have been stripped as you have ${midmessage} **${member.guild.name}**. You will need to re-react if you join again.`);
 			}).catch(e => console.error(e));
 		}
 		if(pmmessage) member.user.send(pmmessage);
