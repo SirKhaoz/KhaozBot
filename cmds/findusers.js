@@ -21,5 +21,5 @@ module.exports.help = {
 	name: "finduser",
 	type: "static",
 	desc: "Finds all users with the specified string in thier display name.",
-	example: "!findusers [string]"
+	example: "!findusers [string] *[admin]*"
 }

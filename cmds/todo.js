@@ -14,6 +14,6 @@ module.exports.run = async (bot, message, args) => {
 module.exports.help = {
 	name: "todo",
 	type: "static",
-	desc: "What Khaoz is working on right now.",
+	desc: "What @Khaoz is working on right now.",
 	example: "!todo"
 }
