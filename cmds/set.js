@@ -16,35 +16,35 @@ module.exports.run = async (bot, message, args) => {
 		return;
 	}
 
-	args = args.map(w => w.toLowerCase());
+	argsLC = args.map(w => w.toLowerCase());
 
-	if(args[0] == "defaultchannel"){
+	if(argsLC[0] == "defaultchannel"){
 		bot.guildSettings[message.guild.id].defaultchannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the default channel, for this server.`);
 	}
-	else if(args[0] == "joinchannel"){
+	else if(argsLC[0] == "joinchannel"){
 		bot.guildSettings[message.guild.id].joinmessage.channel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the join message channel, for this server.`);
 	}
-	else if(args[0] == "leavechannel"){
+	else if(argsLC[0] == "leavechannel"){
 		bot.guildSettings[message.guild.id].leavemessage.channel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the leave message channel, for this server.`);
 	}
-	else if(args[0] == "twitchchannel"){
+	else if(argsLC[0] == "twitchchannel"){
 		bot.guildSettings[message.guild.id].twitchchannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the watched channel for twitch notifications, for this server.`);
 	}
-	else if(args[0] == "leaguechannel"){
+	else if(argsLC[0] == "leaguechannel"){
 		bot.guildSettings[message.guild.id].leaguechannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the watched channel for league live-game notifications, for this server.`);
 	}
-	else if(args[0] == "inthebinchannel"){
-		if(!args[1]){
+	else if(argsLC[0] == "inthebinchannel"){
+		if(!argsLC[1]){
 			let msg = await message.reply("Please specifiy a channel to set as the 'inthebin' channel.");
 			msg.delete({timeout: 7000}).catch(err => console.log(err));
 			return;
 		}
-		let channel = message.guild.channels.cache.filter(c => c.type === 'voice' && c.name.toLowerCase().includes(args[1].toLowerCase())).first();
+		let channel = message.guild.channels.cache.filter(c => c.type === 'voice' && c.name.toLowerCase().includes(argsLC[1].toLowerCase())).first();
 		if(channel){
 			message.reply(`I have set channel ${channel} as the 'inthebin' channel, for this server.`);
 			bot.guildSettings[message.guild.id].touretteschannel = channel.id;
@@ -55,13 +55,13 @@ module.exports.run = async (bot, message, args) => {
 			return;
 		}
 	}
-	else if(args[0] == "afkchannel"){
-		if(!args[1]){
+	else if(argsLC[0] == "afkchannel"){
+		if(!argsLC[1]){
 			let msg = await message.reply("Please specifiy a channel to set as the afk channel.");
 			msg.delete({timeout: 7000}).catch(err => console.log(err));
 			return;
 		}
-		let channel = message.guild.channels.cache.filter(c => c.type === 'voice' && c.name.toLowerCase().includes(args[1].toLowerCase())).first();
+		let channel = message.guild.channels.cache.filter(c => c.type === 'voice' && c.name.toLowerCase().includes(argsLC[1].toLowerCase())).first();
 		if(channel){
 			message.reply(`I have set channel ${channel} as the afk channel, for this server.`);
 			bot.guildSettings[message.guild.id].afkchannel = channel.id;
@@ -72,44 +72,44 @@ module.exports.run = async (bot, message, args) => {
 			return;
 		}
 	}
-	else if(args[0] == "botchannel"){
+	else if(argsLC[0] == "botchannel"){
 		bot.guildSettings[message.guild.id].botchannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as bot commands channel, for this server.`);
 	}
-	else if(args[0] == "musicchannel"){
+	else if(argsLC[0] == "musicchannel"){
 		bot.guildSettings[message.guild.id].musicchannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the music channel, for this server.`);
 	}
-	else if(args[0] == "adminchannel"){
+	else if(argsLC[0] == "adminchannel"){
 		bot.guildSettings[message.guild.id].adminchannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the admin/events channel, for this server.`);
 	}
-	else if(args[0] == "birthdaychannel"){
+	else if(argsLC[0] == "birthdaychannel"){
 		bot.guildSettings[message.guild.id].birthdaychannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the birthday announce channel, for this server.`);
 	}
-	else if(args[0] == "leaguechannel"){
+	else if(argsLC[0] == "leaguechannel"){
 		bot.guildSettings[message.guild.id].bdochannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the league channel, for this server.`);
 	}
-	else if(args[0] == "bdochannel"){
+	else if(argsLC[0] == "bdochannel"){
 		bot.guildSettings[message.guild.id].bdochannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the bdo commands and news channel, for this server.`);
 	}
-	else if(args[0] == "bdobossping"){
+	else if(argsLC[0] == "bdobossping"){
 		bot.guildSettings[message.guild.id].bdobossping.sendpings = !bot.guildSettings[message.guild.id].bdobossping.sendpings;
 		message.reply(`I have set sending BDO boss warning pings to: ${bot.guildSettings[message.guild.id].bdobossping.sendpings}.`);
 	}
-	else if(args[0] == "bdobosstimerchannel"){
+	else if(argsLC[0] == "bdobosstimerchannel"){
 		bot.guildSettings[message.guild.id].bdobossping.bosstimerchannel = message.channel.id;
 		message.reply(`I have set ${message.channel} as the auto updating BDO boss timer channel, for this server.`);
 	}
-	else if(args[0] == "bdosendschedule"){
+	else if(argsLC[0] == "bdosendschedule"){
 		bot.guildSettings[message.guild.id].bdobossping.sendschedule = !bot.guildSettings[message.guild.id].bdobossping.sendschedule;
 		message.reply(`I have set sending the BDO boss schedule to: ${bot.guildSettings[message.guild.id].bdobossping.sendschedule}.`);
 	}
-	else if(args[0] == "bdobosspingrole"){
-		let role = message.mentions.roles.first() || message.guild.roles.cache.get(args[1]);
+	else if(argsLC[0] == "bdobosspingrole"){
+		let role = message.mentions.roles.first() || message.guild.roles.cache.get(argsLC[1]);
 		if(!role){
 			let msg = await message.reply("Could not find the role. Please mention or paste the **role ID** as the final argument.");
 			msg.delete({timeout: 7000});
@@ -124,15 +124,15 @@ module.exports.run = async (bot, message, args) => {
             message.reply(`I have added this role ("${role.name} ID[${role.id}]") to the BDO boss ping list.`);
         }
 	}
-	else if(args[0] == "movecommands"){
+	else if(argsLC[0] == "movecommands"){
 		bot.guildSettings[message.guild.id].movecommands = !bot.guildSettings[message.guild.id].movecommands;
 		message.reply(`I have set the movement of commands to their respective channel to: ${bot.guildSettings[message.guild.id].movecommands}.`);
 	}
-	else if(args[0] == "autopurge"){
+	else if(argsLC[0] == "autopurge"){
 		bot.guildSettings[message.guild.id].autopurge = !bot.guildSettings[message.guild.id].autopurge;
 		message.reply(`I have set the automatic deletion of messages after 14 days to: ${bot.guildSettings[message.guild.id].autopurge}.`);
 	}
-	else if(args[0] == "autopurgechannel"){
+	else if(argsLC[0] == "autopurgechannel"){
         let index = indexOfObjectByName(bot.guildSettings[message.guild.id].autopurgechannels, message.channel.id);
         if(index != -1){
         	bot.guildSettings[message.guild.id].autopurgechannels.splice(index, 1);
@@ -142,39 +142,39 @@ module.exports.run = async (bot, message, args) => {
             message.reply(`I have added this channel to the autopurge exemption list.`);
         }
 	}
-	else if(args[0] == "joinmessage"){
+	else if(argsLC[0] == "joinmessage"){
 		let joinmessage = args.slice(1);
 		joinmessage = joinmessage.join(" ");
 		bot.guildSettings[message.guild.id].joinmessage.message = joinmessage;
 		message.reply(`I have set the user join message to:\n${bot.guildSettings[message.guild.id].joinmessage}`)
 	}
-	else if(args[0] == "leavemessage"){
+	else if(argsLC[0] == "leavemessage"){
 		let leavemessage = args.slice(1);
 		leavemessage = leavemessage.join(" ");
 		bot.guildSettings[message.guild.id].leavemessage.message = leavemessage;
 		message.reply(`I have set the user leave message to:\n${bot.guildSettings[message.guild.id].leavemessage}`)
 	}
-	else if(args[0] == "setupmessage"){
-		if(args[1] == "welcome"){
-			if(args[2] == "message"){
+	else if(argsLC[0] == "setupmessage"){
+		if(argsLC[1] == "welcome"){
+			if(argsLC[2] == "message"){
 				let welcomemessage = args.slice(3);
 				welcomemessage = welcomemessage.join(" ");
 				bot.guildSettings[message.guild.id].welcomemessage.messagebody = welcomemessage;
 				message.reply(`I have set the welcome channel message to:\n\n\n${bot.guildSettings[message.guild.id].welcomemessage.messagebody}`)
-			} else if(args[2] == "pmadd"){
+			} else if(argsLC[2] == "pmadd"){
 				let pmadd = args.slice(3);
 				pmadd = pmadd.join(" ");
 				bot.guildSettings[message.guild.id].welcomemessage.pmadd = pmadd;
 				message.reply(`I have set the welcome channel add-PM to:\n\n\n${bot.guildSettings[message.guild.id].welcomemessage.pmadd}`)
-			} else if(args[2] == "pmremove"){
+			} else if(argsLC[2] == "pmremove"){
 				let pmremove = args.slice(3);
 				pmremove = pmremove.join(" ");
 				bot.guildSettings[message.guild.id].welcomemessage.pmremove = pmremove;
 				message.reply(`I have set the welcome channel remove-PM to:\n\n\n${bot.guildSettings[message.guild.id].welcomemessage.pmremove}`)
-			} else if(args[2] == "anyemoji"){
+			} else if(argsLC[2] == "anyemoji"){
 				bot.guildSettings[message.guild.id].welcomemessage.anyemoji = !bot.guildSettings[message.guild.id].welcomemessage.anyemoji;
-			} else if(args[2] == "emoji"){
-				let emoji = emojiextract(args.slice(3).join(" "));
+			} else if(argsLC[2] == "emoji"){
+				let emoji = emojiextract(argsLC.slice(3).join(" "));
 				if(emoji){
 					let index = indexOfObjectByName(bot.guildSettings[message.guild.id].welcomemessage.emojis, emoji);
 					if(index != -1){
@@ -186,12 +186,12 @@ module.exports.run = async (bot, message, args) => {
 			        }
 			    }
 			    else{
-			    	let msg = await message.reply("Not a valid emoji: '" + args.slice(3).join(" ") +"'");
+			    	let msg = await message.reply("Not a valid emoji: '" + argsLC.slice(3).join(" ") +"'");
 					msg.delete({timeout: 7000});
 					return;
 			    }
-			} else if(args[2] == "role"){
-				let role = message.mentions.roles.first() || message.guild.roles.cache.get(args[3]);
+			} else if(argsLC[2] == "role"){
+				let role = message.mentions.roles.first() || message.guild.roles.cache.get(argsLC[3]);
 				if(!role){
 					let msg = await message.reply("Could not find the role. Please mention or paste the **role ID** as the final argument.");
 					msg.delete({timeout: 7000});
@@ -210,25 +210,25 @@ module.exports.run = async (bot, message, args) => {
 				msg.delete({timeout: 7000});
 				return;
 			}
-		} else if(args[1] == "role"){
-			if(args[2] == "message"){
+		} else if(argsLC[1] == "role"){
+			if(argsLC[2] == "message"){
 				let rolemessage = args.slice(3);
 				rolemessage = rolemessage.join(" ");
 				bot.guildSettings[message.guild.id].rolemessage.messagebody = rolemessage;
 				message.reply(`I have set the role-assign channel message to:\n\n\n${bot.guildSettings[message.guild.id].rolemessage.messagebody}`)
-			} else if(args[2] == "pmadd"){
+			} else if(argsLC[2] == "pmadd"){
 				let pmadd = args.slice(3);
 				pmadd = pmadd.join(" ");
 				bot.guildSettings[message.guild.id].rolemessage.pmadd = pmadd;
 				message.reply(`I have set the role-assign channel add-PM to:\n\n\n${bot.guildSettings[message.guild.id].rolemessage.pmadd}`)
-			} else if(args[2] == "pmremove"){
+			} else if(argsLC[2] == "pmremove"){
 				let pmremove = args.slice(3);
 				pmremove = pmremove.join(" ");
 				bot.guildSettings[message.guild.id].rolemessage.pmremove = pmremove;
 				message.reply(`I have set the role-assign channel remove-PM to:\n\n\n${bot.guildSettings[message.guild.id].rolemessage.pmremove}`)
-			}else if(args[2] == "role"){
-				let emoji = emojiextract(args.slice(3).join(" "));
-				let roleID = args.slice(3).join(" ").match(/\d+/g);
+			}else if(argsLC[2] == "role"){
+				let emoji = emojiextract(argsLC.slice(3).join(" "));
+				let roleID = argsLC.slice(3).join(" ").match(/\d+/g);
 				let role = message.mentions.roles.first() || message.guild.roles.cache.get(roleID[0]);
 				if(!role){
 					let msg = await message.reply("Could not find a role. Please mention or paste the **role ID** as the final argument.");
@@ -259,7 +259,7 @@ module.exports.run = async (bot, message, args) => {
 			return;
 		}
 	}
-	else if(args[0] == "help"){
+	else if(argsLC[0] == "help"){
 		message.channel.send(`**!set help** - displays this list.\n\
 **!set defaultchannel** - sets the default/general channel of the server, to send and recieve primary bot updates such as join/leave messages.\n\
 **!set joinchannel** - sets the join message channel of the server, if you need to specifically split join/leave messages.\n\
