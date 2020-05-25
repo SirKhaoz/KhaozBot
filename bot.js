@@ -514,6 +514,7 @@ bot.on("guildDelete", guild => {
 })
 
 bot.on("guildMemberAdd", (member) => {
+	if(!bot.guildSettings[member.guild.id].leavemessage.send) return;
 	try{
 		let channel;
 		if (bot.guildSettings[member.guild.id].joinmessage.channel) {
@@ -565,11 +566,13 @@ bot.on("guildMemberRemove", async (member) => {
 		} else {
 			channel = member.guild.channels.cache.filter(c => c.type === 'text' && c.permissionsFor(member.guild.me).has(["SEND_MESSAGES", "EMBED_LINKS", "VIEW_CHANNEL"])).sort((a, b) => a.calculatedPosition - b.calculatedPosition).first();
 		}
-		let leavemessage = bot.guildSettings[member.guild.id].leavemessage.message.replace(/{{{user}}}/gi, `${member.user} (*${member.displayName}*)`);
-		channel.send(`**(${leavetype})** - ${leavemessage}`).then(m => {
-			if(leavetype != "Left") m.react("🇫");
-			m.react("👋");
-		});
+		if(bot.guildSettings[member.guild.id].leavemessage.send){
+			let leavemessage = bot.guildSettings[member.guild.id].leavemessage.message.replace(/{{{user}}}/gi, `${member.user} (*${member.displayName}*)`);
+			channel.send(`**(${leavetype})** - ${leavemessage}`).then(m => {
+				if(leavetype != "Left") m.react("🇫");
+				m.react("👋");
+			});
+		}
 
 		let pmmessage = null;
 		let midmessage = "left"
