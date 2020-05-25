@@ -8,6 +8,7 @@ const https = require("https");
 var server, twitchChannels;
 //TODO, fix this whole command with new twitch API
 module.exports.run = async (bot, message, args) => {
+	if(bot.authusers[message.member.id].admin != 1) return message.reply(`I'm working on this at the moment. This broke with the latest RIOT API update.`);
 	let action = args[0];
 	//Quick check to see if user has not given a name.
 	if(!action){
