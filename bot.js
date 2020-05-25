@@ -572,20 +572,20 @@ bot.on("guildMemberRemove", async (member) => {
 		if(bot.guildSettings[member.guild.id].welcomemessage.messageid){
 			let channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].welcomemessage.channelid);
 			channel.messages.fetch(bot.guildSettings[member.guild.id].welcomemessage.messageid).then(msg => {
-		    	msg.reactions.forEach(async r => {
+		    	msg.reactions.cache.forEach(async r => {
 			    	r.remove(member.id);
 		    	});
 		    	pmmessage = (`Your **welcome** roles have been stripped as you have left the server. You will need to re-react the next time you join.`);
-			}).catch(e => console.error(e)).finally(console.log("No welcome message?"));
+			}).catch(e => console.error(e));
 		}
 		if(bot.guildSettings[member.guild.id].rolemessage.messageid){
-			let channel = member.guild.channels.cache.find(bot.guildSettings[member.guild.id].rolemessage.channelid);
+			let channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].rolemessage.channelid);
 			channel.messages.fetch(bot.guildSettings[member.guild.id].rolemessage.messageid).then(msg => {
-		    	msg.reactions.forEach(async r => {
-			    	r.remove(member.id);
+		    	msg.reactions.cache.forEach(async react => {
+			    	react.remove(member.id);
 		    	});
 		    	pmmessage += (`\nYour **channel-specific** roles have been stripped as you have left the server. You will need to re-react the next time you join.`);
-			}).catch(e => console.error(e)).finally(console.log("No role message?"));
+			}).catch(e => console.error(e));
 		}
 		if(pmmessage) member.user.send(pmmessage);
 	}catch(e){
