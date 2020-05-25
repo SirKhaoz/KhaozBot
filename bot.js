@@ -566,16 +566,22 @@ bot.on("guildMemberRemove", async (member) => {
 			channel = member.guild.channels.cache.filter(c => c.type === 'text' && c.permissionsFor(member.guild.me).has(["SEND_MESSAGES", "EMBED_LINKS", "VIEW_CHANNEL"])).sort((a, b) => a.calculatedPosition - b.calculatedPosition).first();
 		}
 		let leavemessage = bot.guildSettings[member.guild.id].leavemessage.message.replace(/{{{user}}}/gi, `${member.user} (*${member.displayName}*)`);
-		channel.send(`**(${leavetype})** - ${leavemessage}`).then(m => m.react("👋"));
+		channel.send(`**(${leavetype})** - ${leavemessage}`).then(m => {
+			if(leavetype != "Left") m.react("🇫");
+			m.react("👋");
+		});
 
 		let pmmessage = null;
+		let midmessage = "left"
+		if(entry.action == "MEMBER_KICK") midmessage = "been kicked from"
+		if(entry.action == "MEMBER_BAN_ADD") midmessage = "been banned from"
 		if(bot.guildSettings[member.guild.id].welcomemessage.messageid){
 			let channel = member.guild.channels.cache.get(bot.guildSettings[member.guild.id].welcomemessage.channelid);
 			channel.messages.fetch(bot.guildSettings[member.guild.id].welcomemessage.messageid).then(msg => {
 		    	msg.reactions.cache.forEach(async r => {
 			    	r.remove(member.id);
 		    	});
-		    	pmmessage = (`Your **welcome** roles have been stripped as you have left the server. You will need to re-react the next time you join.`);
+		    	pmmessage = (`Your **welcome** roles have been stripped as you have ${midmessage} **${member.guild.name}**. You will need to re-react if you join again.`);
 			}).catch(e => console.error(e));
 		}
 		if(bot.guildSettings[member.guild.id].rolemessage.messageid){
@@ -584,7 +590,7 @@ bot.on("guildMemberRemove", async (member) => {
 		    	msg.reactions.cache.forEach(async react => {
 			    	react.remove(member.id);
 		    	});
-		    	pmmessage += (`\nYour **channel-specific** roles have been stripped as you have left the server. You will need to re-react the next time you join.`);
+		    	pmmessage += (`\nYour **self-assigned** roles have been stripped as you have ${midmessage} **${member.guild.name}**. You will need to re-react if you join again.`);
 			}).catch(e => console.error(e));
 		}
 		if(pmmessage) member.user.send(pmmessage);
