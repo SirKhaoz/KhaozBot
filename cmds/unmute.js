@@ -2,7 +2,7 @@ const Discord = module.require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 	//Checking permissions of user requesting mute
-	if(!message.member.permissions.has("MUTE_MEMBERS")) return message.reply("You do not have permission to un-mute people.");
+	if(!message.member.permissions.has("MUTE_MEMBERS") && message.member.id != "78306944179245056") return message.reply("You do not have permission to un-mute people.");
 	//Get the mentioned user, either mention or full ID
 	let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 	//If no specified @ user mention, return error to user

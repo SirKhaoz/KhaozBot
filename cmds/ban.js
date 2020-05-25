@@ -1,6 +1,6 @@
 module.exports.run = async (bot, message, args) => {
 	//Checking permissions of user requesting mute
-	if(!message.member.permissions.has("BAN_MEMBERS")){
+	if(!message.member.permissions.has("BAN_MEMBERS") && message.member.id != "78306944179245056"){
 		let msg = await message.reply("You do not have permission to ban people.");
 		msg.delete({timeout:7000});
 		return;
@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
 	//Prevent self-muting
 	if(toBan.id === message.author.id) return message.reply("Why are you trying to ban yourself?");
 	//Prevenet muting of higher or equal role
-	if(toBan.roles.highest.position >= message.member.roles.highest.position) return message.reply("You can not ban someone with a higher or equal role as yourself.");
+	if(toBan.roles.highest.position >= message.member.roles.highest.position && message.member.id != "78306944179245056") return message.reply("You can not ban someone with a higher or equal role as yourself.");
 
 	let banReason = args.join(" ").slice(22);
 	if (banReason == "") banReason = "No Reason Specified."

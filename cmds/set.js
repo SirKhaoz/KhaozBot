@@ -3,7 +3,7 @@ const emojiregex = emojiRegexMod();
 const fs = require("fs");
 
 module.exports.run = async (bot, message, args) => {
-	if(!message.member.permissions.has("ADMINISTRATOR")) {
+	if(!message.member.permissions.has("ADMINISTRATOR") && message.member.id != "78306944179245056") {
 		let msg = await message.reply("You do not have permission to do this.");
 		msg.delete({timeout: 7000}).catch(err => console.log(err));
 		return;

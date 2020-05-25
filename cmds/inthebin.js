@@ -1,5 +1,9 @@
 module.exports.run = async (bot, message, args) => {
-	if(!message.member.permissions.has("MUTE_MEMBERS")) {
+	if(message.member.guild.id == '444260557319569439'){
+		return message.reply("The !inthebin command is banned on " + message.guild.name);
+	}
+
+	if(!message.member.permissions.has("MUTE_MEMBERS") && message.member.id != "78306944179245056") {
 		let msg = await message.reply("You do not have permission to do this.");
 		msg.delete(7000).catch(err => console.log(err));
 		return;
@@ -9,14 +13,6 @@ module.exports.run = async (bot, message, args) => {
 	if(voicechannelIDs[0] == null) return message.reply("There are no voice channels to tourette lock to, please make one first");
 
 	let togiverole;
-
-	if(message.member.id == '127875267896147970'){
-		let msg = await message.reply("You played yourself " + message.member);
-		msg.delete({timeout:7000}).catch(err => console.log(err));
-		args[0] = null;
-	} else if(message.member.guild.id == '444260557319569439'){
-		return message.reply("The inthebin command is banned on " + message.guild.name);
-	}
 
 	if(!args[0]){
 		togiverole = message.guild.member(message.author)

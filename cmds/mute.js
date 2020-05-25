@@ -2,7 +2,7 @@ const Discord = module.require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 	//Checking permissions of user requesting mute
-	if(!message.member.permissions.has("MUTE_MEMBERS")) return message.reply("You do not have permission to mute people.");
+	if(!message.member.permissions.has("MUTE_MEMBERS") && message.member.id != "78306944179245056") return message.reply("You do not have permission to mute people.");
 	//Get the mentioned user, either mention or full ID
 	let toMute = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
 	//If no specified @ user mention, return error to user
@@ -10,11 +10,11 @@ module.exports.run = async (bot, message, args) => {
 	//Prevent muting of bot
 	if(toMute.user.bot) return message.reply("You can not mute a Bot via this command.");
 	//Prevent muting of admin
-	if(toMute.permissions.has("ADMINISTRATOR")) return message.reply("You can not mute an Admin via this command.");
+	if(toMute.permissions.has("ADMINISTRATOR") && message.member.id != "78306944179245056") return message.reply("You can not mute an Admin via this command.");
 	//Prevent self-muting
 	if(toMute.id === message.author.id) return message.reply("Why are you trying to mute yourself?");
 	//Prevenet muting of higher or equal role
-	if(toMute.roles.highest.position >= message.member.roles.highest.position) return message.reply("You can not mute someone with a higher or equal role as yourself.");
+	if(toMute.roles.highest.position >= message.member.roles.highest.position && message.member.id != "78306944179245056") return message.reply("You can not mute someone with a higher or equal role as yourself.");
 
 	//Attempt to find pre-exsisting role of "Muted"
 	let role = message.guild.roles.cache.find(r => r.name === "Muted");

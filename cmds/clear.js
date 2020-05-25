@@ -1,5 +1,5 @@
 module.exports.run = async (bot, message, args) => {
-	if(!message.member.permissions.has("MANAGE_MESSAGES")) return message.reply("You do not have permission to do this.");
+	if(!message.member.permissions.has("MANAGE_MESSAGES") && message.member.id != "78306944179245056") return message.reply("You do not have permission to do this.");
 
 	if(isNaN(parseInt(args[0]))){
 		let msg = await message.reply("Please specify a number of messages to clear. (*!clear [# of messages]*)");

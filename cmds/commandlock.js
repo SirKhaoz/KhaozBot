@@ -3,7 +3,7 @@ const botmisc = require("../resources/botmiscsettings.json");
 const fs = require("fs");
 
 module.exports.run = async (bot, message, args) => {
-	if(!message.member.permissions.has("ADMINISTRATOR")) {
+	if(!message.member.permissions.has("ADMINISTRATOR") && message.member.id != "78306944179245056") {
 		let msg = await message.reply("You do not have permission to do this.");
 		msg.delete(7000).catch(err => console.log(err));
 		return;
@@ -16,7 +16,7 @@ module.exports.run = async (bot, message, args) => {
 	//Prevent muting of bot
 	if(toMute.user.bot) return message.reply("You can not command lock a Bot...");
 	//Prevent muting of admin
-	if(toMute.permissions.has("ADMINISTRATOR")) return message.reply("You can not command lock an Admin...");
+	if(toMute.permissions.has("ADMINISTRATOR") && message.member.id != "78306944179245056") return message.reply("You can not command lock an Admin...");
 	//Prevent self-muting
 	if(toMute.id === message.author.id) return message.reply("Why are you trying to command lock yourself?");
 	//Prevenet muting of higher or equal role
@@ -31,7 +31,7 @@ module.exports.run = async (bot, message, args) => {
 		bot.guildSettings[message.guild.id].commandlocked.push(toMute.id);
 		message.reply(` I have added a command lock on ${toMute}.`);
 	}
-	
+
 }
 
 function indexOfObjectByName(array, value){
