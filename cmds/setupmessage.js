@@ -45,14 +45,22 @@ module.exports.run = async (bot, message, args) => {
 			msg.delete({timeout: 14000}).catch(err => console.log(err));
 		}
 		if(bot.guildSettings[message.guild.id].rolemessage.messageid){
-			let messagechannel = message.guild.channels.cache.find(c => c.id == bot.guildSettings[message.guild.id].rolemessage.channelid);
+			let messagechannel = message.guild.channels.cache.get(bot.guildSettings[message.guild.id].rolemessage.channelid);
 			messagechannel.messages.fetch(bot.guildSettings[message.guild.id].rolemessage.messageid).then(msg => {
 				msg.edit(bot.guildSettings[message.guild.id].rolemessage.messagebody);
 				bot.guildSettings[message.guild.id].rolemessage.roles.forEach(async em => {
 					await msg.react(em[0]);
 				});
 			}).catch(function(e) {
-				message.channel.send("Error occured:\n" + e)
+				message.channel.send(bot.guildSettings[message.guild.id].rolemessage.messagebody).then(async function (msg){
+					bot.guildSettings[message.guild.id].rolemessage.roles.forEach(async em => {
+						await msg.react(em[0]);
+					});
+					bot.guildSettings[message.guild.id].rolemessage.messageid = msg.id;
+					bot.guildSettings[message.guild.id].rolemessage.channelid = msg.channel.id;
+				}).catch(function(e) {
+					message.channel.send("Error when setting up role message:\n" + e)
+				});
 			});
 		} else {
 			message.channel.send(bot.guildSettings[message.guild.id].rolemessage.messagebody).then(async function (msg){
@@ -70,7 +78,7 @@ module.exports.run = async (bot, message, args) => {
 		msg.delete({timeout: 7000}).catch(err => console.log(err));
 		return;
 	}
-	
+
 	console.log(`SETUP ${args[0]} MESSAGE WAS RUN ON: ${message.member.guild.name} BY: ${message.member.user.username}#${message.member.user.discriminator}`);
 }
 

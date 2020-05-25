@@ -45,7 +45,7 @@
       "musicchannel": "637383763776765972",
       "afkchannel": "222497152054591491",
       "rolemessage": {
-         "messageid": "668200116015857724",
+         "messageid": "714355684006690836",
          "channelid": "667993124534222849",
          "messagebody": "**Role Assign Channel**\nHi @everyone, please react to this message to receive the correct role(s) for the desired additional channel(s).\nThis is now how you self-assign roles. (NOTE: !sub [role] is now depreciated.)\n\n**Gaming Channels:**\n🔴 - Battle-Royals\n🪓 - BDO\n🏳️‍🌈 - Classic WoW\n🔫 - Destiny 2\n🐱 - ESO\n🧂 - LoL\n💯 - OSRS\n💫 - POE\n🦄 - Pokemon\n🏞️ - Retail WoW\n🤖 - RS3\n☢️ - Rust\n🌲 - Terraria\n💢 - TF2\n\n**Other Channels:**\n🎶 - Music Channels\n🐲 - BDO Boss Pings\n👫 - LoL Flex Pings",
          "roles": [
@@ -122,9 +122,9 @@
          "pmremove": "{{{emoji}}}  you have removed yourself from **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}"
       },
       "welcomemessage": {
-         "messageid": "330166627658235904",
+         "messageid": "714357236662534207",
          "channelid": "329152874707681280",
-         "messagebody": "<:thelads:448589522356142090> **Welcome to The Big Sad, we hope you cry a lot, and enjoy your stay** <:thelads:448589522356142090>\n\n\n1️⃣ Respect <@!177621692191997952> because otherwise he'll curse your RNG forever (rip <@!78306944179245056>'s rng)\n2️⃣ Memes are to be fresh, edgy and as spicy as possible (have a 5 minute conversation with @Dusty Nigga if you want to define 'spicy')\n4️⃣ \"Just don't be a cunt\" -@Henri 2k18\n5️⃣ Where is rule 3️⃣? Ffs @Depressed Avocado give it back\n6️⃣ To the discretion of the server owners channels, messages, links and data may be purged at any such time.\n\n\n**Seeing The Channels**\nTo avoid spam you won't be able to see all the channels on the server.\nThere is a channel specifically for role assignment (<#667993124534222849>).\n\n\nYou probably want to mute the channels <#637383895360339989>  and <#637383763776765972> unless you're into getting spammed.\n<#452621841190748170> and the gaming channels have updates periodically posted by the bot.\n\n\n**Errors and Suggestions**\nIf anyone has any problems, notices the bot offline, errors, issues anything related - including twitch notifications etc please @ me or send me a DM.\n\n\nTo access the server after reading this, please react to this message with 🐓.",
+         "messagebody": "<:thelads:448589522356142090> **Welcome to The Big Sad, we hope you cry a lot, and enjoy your stay** <:thelads:448589522356142090>\n\n1️⃣ Respect <@!177621692191997952> because otherwise he'll curse your RNG forever (rip <@!78306944179245056>'s rng)\n2️⃣ Memes are to be fresh, edgy and as spicy as possible (have a 5 minute conversation with <@!184806427037138944> if you want to define 'spicy')\n4️⃣ \"Just don't be a cunt\" - <@!124358785190854661> 2k18\n5️⃣ Where is rule 3️⃣? Ffs <@!98595901055959040> give it back\n6️⃣ To the discretion of the server owners channels, messages, links and data may be purged at any such time.\n\n**Seeing The Channels**\nTo avoid spam you won't be able to see all the channels on the server.\nVisit <#667993124534222849> after reacting to this message to join roles.\n\n**To access the server after reading this, please react to this message with** 🐓.\n\n👇🏽👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽 👈🏽",
          "anyemoji": false,
          "emojis": [
             "🐓"
