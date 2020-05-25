@@ -12,6 +12,8 @@ module.exports.run = async (bot, message, args) => {
 		return;
 	}
 
+	args = args.map(w => w.toLowerCase());
+
 	let txtchannelIDs = message.guild.channels.cache.filter(c=>c.type === 'text').sort((a, b) => a.calculatedPosition - b.calculatedPosition).map(c=>c);
 	let voicechannelIDs = message.guild.channels.cache.filter(c=>c.type === 'voice').sort((a, b) => a.calculatedPosition - b.calculatedPosition).map(c=>c);
 
@@ -23,9 +25,17 @@ module.exports.run = async (bot, message, args) => {
 		bot.guildSettings[message.guild.id].joinmessage.channel = txtchannelIDs[0];
 		message.reply(`I have cleared the join message channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
 	}
+	else if(argsLC[0] == "sendjoinmessages"){
+		bot.guildSettings[message.guild.id].joinmessage.send = true;
+		message.reply(`I have set the user-join messages back to the default of: ${bot.guildSettings[message.guild.id].joinmessage.send}.`);
+	}
 	else if(args[0] == "leavechannel"){
 		bot.guildSettings[message.guild.id].leavemessage.channel = txtchannelIDs[0];
 		message.reply(`I have cleared the leave message channel, for this server. It has defaulted back to: ${txtchannelIDs[0]}`);
+	}
+	else if(argsLC[0] == "sendleavemessages"){
+		bot.guildSettings[message.guild.id].leavemessage.send = true;
+		message.reply(`I have set the user-join messages back to the default of: ${bot.guildSettings[message.guild.id].leavemessage.send}.`);
 	}
 	else if(args[0] == "twitchchannel"){
 		bot.guildSettings[message.guild.id].twitchchannel = txtchannelIDs[0];
