@@ -503,20 +503,20 @@
    },
    "701134183736541195": {
       "guildID": "701134183736541195",
-      "defaultchannel": "701134183736541198",
+      "defaultchannel": "714329719293607947",
       "joinmessage": {
          "send": true,
-         "channel": "701134183736541198",
+         "channel": "714331495266779136",
          "message": "Welcome to the server... {{{user}}}"
       },
       "leavemessage": {
          "send": true,
-         "channel": "701134183736541198",
+         "channel": "714331495266779136",
          "message": "Rip, cy@ nerd, {{{user}}} has left."
       },
       "twitchchannel": "701134183736541198",
       "birthdaychannel": "701134183736541198",
-      "touretteschannel": "703201535512936508",
+      "touretteschannel": "714332655239561287",
       "afkchannel": "703201535512936508",
       "botchannel": "705565332072562725",
       "musicchannel": "701134183736541198",
@@ -569,7 +569,8 @@
          "anyemoji": false,
          "emojis": [],
          "roles": []
-      }
+      },
+      "adminchannel": "714331638414442496"
    },
    "616971615334432799": {
       "guildID": "616971615334432799",
@@ -615,77 +616,6 @@
          }
       },
       "movecommands": true,
-      "twitchChannels": [],
-      "summonerNames": [],
-      "commandlocked": [],
-      "autopurge": false,
-      "autopurgechannels": [],
-      "queue": [],
-      "botVolume": "0.3",
-      "repeat": false,
-      "rolemessage": {
-         "messageid": null,
-         "channelid": null,
-         "messagebody": null,
-         "pmadd": null,
-         "pmremove": null,
-         "roles": []
-      },
-      "welcomemessage": {
-         "messageid": null,
-         "channelid": null,
-         "messagebody": null,
-         "pmadd": "{{{emoji}}}  Welcome to {{{servername}}}!  {{{emoji}}}",
-         "pmremove": "{{{emoji}}}  you have left {{{servername}}}.  {{{emoji}}}",
-         "anyemoji": false,
-         "emojis": [],
-         "roles": []
-      }
-   },
-   "714245218324709396": {
-      "guildID": "714245218324709396",
-      "defaultchannel": "714245218324709399",
-      "joinmessage": {
-         "send": true,
-         "channel": "714245218324709399",
-         "message": "Welcome to the server... {{{user}}}"
-      },
-      "leavemessage": {
-         "send": true,
-         "channel": "714245218324709399",
-         "message": "Rip, cy@ nerd, {{{user}}} has left."
-      },
-      "adminchannel": "714245218324709399",
-      "birthdaychannel": "714245218324709399",
-      "twitchchannel": "714245218324709399",
-      "touretteschannel": "714245218324709400",
-      "afkchannel": "714245218324709400",
-      "botchannel": "714245218324709399",
-      "musicchannel": "714245218324709399",
-      "leaguechannel": "714245218324709399",
-      "bdochannel": "714245218324709399",
-      "bdobossping": {
-         "sendpings": false,
-         "roles": [],
-         "bosstimerchannel": "714245218324709399",
-         "sendschedule": false,
-         "lastmessage": {
-            "id": null,
-            "channel": null
-         },
-         "bosses": {
-            "kzarka": true,
-            "nouver": true,
-            "kutum": true,
-            "karanda": true,
-            "vell": true,
-            "garmoth": true,
-            "offin": true,
-            "quint": true,
-            "muraka": true
-         }
-      },
-      "movecommands": false,
       "twitchChannels": [],
       "summonerNames": [],
       "commandlocked": [],
