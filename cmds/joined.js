@@ -1,9 +1,5 @@
-const Discord = module.require("discord.js");
-const lolaccounts = require("../resources/lolaccounts.json");
-const fs = require("fs");
-
 module.exports.run = async (bot, message, args) => {
-	let joineduser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
+	let joineduser = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[0]);
 
 	//If no specified @ user mention
 	if(!joineduser) joineduser = message.guild.member(message.member);
