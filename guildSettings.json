@@ -37,7 +37,8 @@
          "329152874707681280",
          "667993124534222849",
          "463999413426323469",
-         "705195517453402193"
+         "705195517453402193",
+         "720428392717221898"
       ],
       "queue": [],
       "botVolume": 0.1,
@@ -47,7 +48,7 @@
       "rolemessage": {
          "messageid": "714355684006690836",
          "channelid": "667993124534222849",
-         "messagebody": "**Role Assign Channel**\nHi @everyone, please react to this message to receive the correct role(s) for the desired additional channel(s).\nThis is now how you self-assign roles. (NOTE: !sub [role] is now depreciated.)\n\n**Gaming Channels:**\n🔴 - Battle-Royals\n🪓 - BDO\n🏳️‍🌈 - Classic WoW\n🔫 - Destiny 2\n🐱 - ESO\n🧂 - LoL\n💯 - OSRS\n💫 - POE\n🦄 - Pokemon\n🏞️ - Retail WoW\n🤖 - RS3\n☢️ - Rust\n🌲 - Terraria\n💢 - TF2\n\n**Other Channels:**\n🎶 - Music Channels\n🐲 - BDO Boss Pings\n👫 - LoL Flex Pings",
+         "messagebody": "**Role Assign Channel**\nHi @everyone, please react to this message to receive the correct role(s) for the desired additional channel(s).\nThis is now how you self-assign roles. (NOTE: !sub [role] is now depreciated.)\n\n**Gaming Channels:**\n🔴 - Battle-Royals\n🪓 - BDO\n🏳️‍🌈 - Classic WoW\n🔫 - Destiny 2\n🐱 - ESO\n🧂 - LoL\n💯 - OSRS\n💫 - POE\n🦄 - Pokemon\n🏞️ - Retail WoW\n🤖 - RS3\n☢️ - Rust\n🌲 - Terraria\n💢 - TF2\n\n**Other Channels:**\n🎶 - Music Channels\n👮 - Security Information Channel\n🐲 - BDO Boss Pings\n👫 - LoL Flex Pings",
          "roles": [
             [
                "🪓",
@@ -116,6 +117,10 @@
             [
                "👫",
                "698080947806928947"
+            ],
+            [
+               "👮",
+               "720428479149244467"
             ]
          ],
          "pmadd": "{{{emoji}}}  you can now access **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}",
@@ -515,7 +520,7 @@
          "message": "Rip, cy@ nerd, {{{user}}} has left."
       },
       "twitchchannel": "701134183736541198",
-      "birthdaychannel": "701134183736541198",
+      "birthdaychannel": "714325679101182002",
       "touretteschannel": "714332655239561287",
       "afkchannel": "703201535512936508",
       "botchannel": "705565332072562725",
@@ -623,6 +628,77 @@
       "autopurgechannels": [],
       "queue": [],
       "botVolume": "0.3",
+      "repeat": false,
+      "rolemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": null,
+         "pmremove": null,
+         "roles": []
+      },
+      "welcomemessage": {
+         "messageid": null,
+         "channelid": null,
+         "messagebody": null,
+         "pmadd": "{{{emoji}}}  Welcome to {{{servername}}}!  {{{emoji}}}",
+         "pmremove": "{{{emoji}}}  you have left {{{servername}}}.  {{{emoji}}}",
+         "anyemoji": false,
+         "emojis": [],
+         "roles": []
+      }
+   },
+   "728462918244499478": {
+      "guildID": "728462918244499478",
+      "defaultchannel": "728560449288929372",
+      "joinmessage": {
+         "send": true,
+         "channel": "728516357393481759",
+         "message": "Welcome to the server... {{{user}}}"
+      },
+      "leavemessage": {
+         "send": true,
+         "channel": "728516357393481759",
+         "message": "Rip, cy@ nerd, {{{user}}} has left."
+      },
+      "adminchannel": "728678354424692746",
+      "birthdaychannel": "728516357393481759",
+      "twitchchannel": "728516357393481759",
+      "touretteschannel": "728462918768918591",
+      "afkchannel": "728533486578696195",
+      "botchannel": "728516357393481759",
+      "musicchannel": "728564053873786910",
+      "leaguechannel": "728516357393481759",
+      "bdochannel": "728640310950756442",
+      "bdobossping": {
+         "sendpings": true,
+         "roles": [],
+         "bosstimerchannel": "728640310950756442",
+         "sendschedule": true,
+         "lastmessage": {
+            "id": "728717133437206538",
+            "channel": "728640310950756442"
+         },
+         "bosses": {
+            "kzarka": true,
+            "nouver": true,
+            "kutum": true,
+            "karanda": true,
+            "vell": true,
+            "garmoth": true,
+            "offin": true,
+            "quint": true,
+            "muraka": true
+         }
+      },
+      "movecommands": false,
+      "twitchChannels": [],
+      "summonerNames": [],
+      "commandlocked": [],
+      "autopurge": false,
+      "autopurgechannels": [],
+      "queue": [],
+      "botVolume": 0.07,
       "repeat": false,
       "rolemessage": {
          "messageid": null,

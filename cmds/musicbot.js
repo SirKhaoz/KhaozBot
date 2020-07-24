@@ -34,7 +34,7 @@ module.exports.run = async (bot, message, args) => {
 		return;
 	}
 
-	bot.musicguilds[message.guild.id].voiceChannel = message.member.voice.channel;
+	//
 
 	if (args[0].includes("list=")){
 		let songlist = [];
@@ -45,7 +45,6 @@ module.exports.run = async (bot, message, args) => {
 			let id = songlist[i];
 			await fetchVideoInfo(id, (err, videoInfo) => {
 				if(err) throw new Error(err);
-				console.log(id);
 				if(bot.guildSettings[message.guild.id].queue.length > 0 || bot.musicguilds[message.guild.id].isPlaying){
 				    bot.guildSettings[message.guild.id].queue.push({id: id, name: videoInfo.title});
 				} else {
@@ -76,6 +75,7 @@ module.exports.run = async (bot, message, args) => {
 				if(!videoInfo.regionsAllowed.includes("NZ")) return message.reply("Unable to play this song. This is most likley due to a regional error :(\nThe bot is hosted via VPS in *New Zealand*.")
 
 				if(bot.guildSettings[message.guild.id].queue.length > 0 || bot.musicguilds[message.guild.id].isPlaying){
+					if (videoInfo.title.toLowerCase().includes("minecraft")) return message.reply("Fuck off with the minecraft shit Keegan.")
 		    	if (isYoutube(id)) {
 			      bot.guildSettings[message.guild.id].queue.push({id: getYouTubeID(id), name: videoInfo.title});
 			    	message.reply(` added to queue **${videoInfo.title}**\nYou searched for: "${args[0]}"\nhttps://www.youtube.com/watch?v=${id}`);
@@ -85,6 +85,8 @@ module.exports.run = async (bot, message, args) => {
 			    }
 				}
 				else {
+					if (videoInfo.title.toLowerCase().includes("minecraft")) return message.reply("Fuck off with the minecraft shit Keegan.")
+					bot.musicguilds[message.guild.id].voiceChannel = message.member.voice.channel;
 					playMusic(id, message);
 					bot.musicguilds[message.guild.id].isPlaying = true;
 					if (isYoutube(id)) {
@@ -104,7 +106,8 @@ module.exports.run = async (bot, message, args) => {
 function search_video(query, callback){
 	request("https://www.googleapis.com/youtube/v3/search?part=id&type=video&q=" + encodeURIComponent(query) + "&key=" + ytapikey, function(error, response, body) {
         var json = JSON.parse(body);
-        if(!json.items[0]) callback("novid");
+				console.log(json.items);
+        if(!json.items) callback("novid");
         else{
         	callback(json.items[0].id.videoId);
         }

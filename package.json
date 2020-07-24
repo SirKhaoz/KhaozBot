@@ -27,6 +27,6 @@
     "runescape-api": ">=2.1.0",
     "youtube-info": "^1.3.2",
     "youtube-playlist": ">=1.0.2",
-    "ytdl-core": "^2.1.1"
+    "ytdl-core": "^2.1.5"
   }
 }

@@ -424,20 +424,19 @@ bot.on("ready", async () => {
 								console.log("Found message: " + m);
 								m.delete({timeout: 5000,reason:"auto-purged"}).then(m => {
 									console.log("Deleted message: " + m);
-									let arraypos = bot.savedmessages.messages.indexOf(message);
-									bot.savedmessages.messages.splice(arraypos, 1);
 								}).catch(console.error);
 							});
 						}catch(e){
 							if(e.httpStatus = 404){
 								console.error(e);
 								console.log("Message already deleted, removing from savedmessages.")
-								let arraypos = bot.savedmessages.messages.indexOf(message);
-								bot.savedmessages.messages.splice(arraypos, 1);
 							} else {
 								console.log("Message could not be deleted with non 404 response:")
 								console.error(e);
 							}
+						}finally{
+							let arraypos = bot.savedmessages.messages.indexOf(message);
+							bot.savedmessages.messages.splice(arraypos, 1);
 						}
 					} else {
 						let arraypos = bot.savedmessages.messages.indexOf(message);
