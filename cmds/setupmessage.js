@@ -25,15 +25,35 @@ module.exports.run = async (bot, message, args) => {
 			let msg = await message.reply("WARNING: You have not assigned a role. This is not needed, but if you'd like a role to be assigned after reaction use the command:\n!set setupmessage welcome role [@role *or* role id]");
 			msg.delete({timeout: 14000}).catch(err => console.log(err));
 		}
-		message.channel.send(bot.guildSettings[message.guild.id].welcomemessage.messagebody).then(async function (msg){
-			bot.guildSettings[message.guild.id].welcomemessage.emojis.forEach(async em => {
-				await msg.react(em);
+		if(bot.guildSettings[message.guild.id].welcomemessage.messageid){
+			let messagechannel = message.guild.channels.cache.get(bot.guildSettings[message.guild.id].welcomemessage.channelid);
+			messagechannel.messages.fetch(bot.guildSettings[message.guild.id].welcomemessage.messageid).then(msg => {
+				msg.edit(bot.guildSettings[message.guild.id].welcomemessage.messagebody);
+				bot.guildSettings[message.guild.id].welcomemessage.emojis.forEach(async em => {
+					await msg.react(em[0]);
+				});
+			}).catch(function(e) {
+				message.channel.send(bot.guildSettings[message.guild.id].welcomemessage.messagebody).then(async function (msg){
+					bot.guildSettings[message.guild.id].welcomemessage.emojis.forEach(async em => {
+						await msg.react(em[0]);
+					});
+					bot.guildSettings[message.guild.id].welcomemessage.messageid = msg.id;
+					bot.guildSettings[message.guild.id].welcomemessage.channelid = msg.channel.id;
+				}).catch(function(e) {
+					message.channel.send("Error when setting up role message:\n" + e)
+				});
 			});
-			bot.guildSettings[message.guild.id].welcomemessage.messageid = msg.id;
-			bot.guildSettings[message.guild.id].welcomemessage.channelid = msg.channel.id;
-		}).catch(function(e) {
-			message.channel.send("Error when setting up welcome message:\n" + e)
-		});
+		} else {
+			message.channel.send(bot.guildSettings[message.guild.id].welcomemessage.messagebody).then(async function (msg){
+				bot.guildSettings[message.guild.id].welcomemessage.emojis.forEach(async em => {
+					await msg.react(em);
+				});
+				bot.guildSettings[message.guild.id].welcomemessage.messageid = msg.id;
+				bot.guildSettings[message.guild.id].welcomemessage.channelid = msg.channel.id;
+			}).catch(function(e) {
+				message.channel.send("Error when setting up welcome message:\n" + e)
+			});
+		}
 	} else if(args[0] == "role"){
 		if(!bot.guildSettings[message.guild.id].rolemessage.messagebody){
 			let msg = await message.reply("You have not set a message for this. Use !set setupmessage role message [MESSAGE HERE].\nFormatting works such as emojis, * wrap for *italics* and ** wrap for **bold**.");

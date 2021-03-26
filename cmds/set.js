@@ -154,13 +154,13 @@ module.exports.run = async (bot, message, args) => {
 		let joinmessage = args.slice(1);
 		joinmessage = joinmessage.join(" ");
 		bot.guildSettings[message.guild.id].joinmessage.message = joinmessage;
-		message.reply(`I have set the user join message to:\n${bot.guildSettings[message.guild.id].joinmessage}`)
+		message.reply(`I have set the user join message to:\n${bot.guildSettings[message.guild.id].joinmessage.message}`)
 	}
 	else if(argsLC[0] == "leavemessage"){
 		let leavemessage = args.slice(1);
 		leavemessage = leavemessage.join(" ");
 		bot.guildSettings[message.guild.id].leavemessage.message = leavemessage;
-		message.reply(`I have set the user leave message to:\n${bot.guildSettings[message.guild.id].leavemessage}`)
+		message.reply(`I have set the user leave message to:\n${bot.guildSettings[message.guild.id].leavemessage.message}`)
 	}
 	else if(argsLC[0] == "setupmessage"){
 		if(argsLC[1] == "welcome"){

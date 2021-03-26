@@ -41,30 +41,34 @@
          "720428392717221898"
       ],
       "queue": [],
-      "botVolume": 0.1,
+      "botVolume": 0.05,
       "repeat": false,
       "musicchannel": "637383763776765972",
       "afkchannel": "222497152054591491",
       "rolemessage": {
          "messageid": "714355684006690836",
          "channelid": "667993124534222849",
-         "messagebody": "**Role Assign Channel**\nHi @everyone, please react to this message to receive the correct role(s) for the desired additional channel(s).\nThis is now how you self-assign roles. (NOTE: !sub [role] is now depreciated.)\n\n**Gaming Channels:**\n🔴 - Battle-Royals\n🪓 - BDO\n🏳️‍🌈 - Classic WoW\n🔫 - Destiny 2\n🐱 - ESO\n🧂 - LoL\n💯 - OSRS\n💫 - POE\n🦄 - Pokemon\n🏞️ - Retail WoW\n🤖 - RS3\n☢️ - Rust\n🌲 - Terraria\n💢 - TF2\n\n**Other Channels:**\n🎶 - Music Channels\n👮 - Security Information Channel\n🐲 - BDO Boss Pings\n👫 - LoL Flex Pings",
+         "messagebody": "**Role Assign Channel**\nHi @everyone, please react to this message to receive the correct role(s) for the desired additional channel(s).\n\n**Gaming Channels:**\n🔪 - Among Us\n🔥 - Ashes of Creation\n🔴 - Battle-Royals (Warzone etc)\n🪓 - Black Desert Online\n🔫 - Destiny 2\n🧂 - League of Legends\n💯 - OSRS\n💫 - Path of Exile\n👽 - Pokemon\n🌈 - Rainbow 6: Siege\n☢️ - Rust\n🏭 - Satisfactory\n💢 - Team Fortress 2\n\n**Gaming Alerts:**\n🐲 - BDO Boss Pings\n👫 - LoL Flex Pings\n\n**News Channels:**\n👮 - Security Information Channel\n💸 - Investing Information Channel\n\n**Other Channels:**\n🥖 - Food/Cooking Channel\n🎶 - Music Channels",
          "roles": [
+            [
+               "🔪",
+               "756305245285384262"
+            ],
+            [
+               "🔥",
+               "754477015096230019"
+            ],
+            [
+               "🔴",
+               "692977899279482880"
+            ],
             [
                "🪓",
                "452067064723537950"
             ],
             [
-               "🏳️‍🌈",
-               "491039382485336073"
-            ],
-            [
                "🔫",
                "630264941814743050"
-            ],
-            [
-               "🐱",
-               "610382345467330570"
             ],
             [
                "🧂",
@@ -75,40 +79,28 @@
                "452066962336514058"
             ],
             [
-               "🦄",
-               "528816576397574145"
+               "💫",
+               "672553454346174464"
             ],
             [
-               "🏞️",
-               "668302474062462987"
+               "👽",
+               "815910556165996554"
             ],
             [
-               "🤖",
-               "595157010144690178"
+               "🌈",
+               "754480339577208872"
             ],
             [
                "☢️",
                "569283197112811560"
             ],
             [
+               "🏭",
+               "770154618093043722"
+            ],
+            [
                "💢",
                "566168567054336011"
-            ],
-            [
-               "🎶",
-               "470794624483721226"
-            ],
-            [
-               "💫",
-               "672553454346174464"
-            ],
-            [
-               "🌲",
-               "679021646522351637"
-            ],
-            [
-               "🔴",
-               "692977899279482880"
             ],
             [
                "🐲",
@@ -121,6 +113,18 @@
             [
                "👮",
                "720428479149244467"
+            ],
+            [
+               "💸",
+               "815914457016172564"
+            ],
+            [
+               "🥖",
+               "754153009369448470"
+            ],
+            [
+               "🎶",
+               "470794624483721226"
             ]
          ],
          "pmadd": "{{{emoji}}}  you can now access **{{{role}}}** on: **{{{servername}}}**  {{{emoji}}}",
