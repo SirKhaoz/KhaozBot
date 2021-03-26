@@ -168,6 +168,7 @@ bot.on("ready", async () => {
 		bot.bdobossesinfo[b].times.forEach(t => {
 			if(t.announce){
 				let cronarray = t.cron.split(' ')
+				cronarray[2] = parseInt(cronarray[2]) + 2//+1 for Daylight Savings Time (DST)
 				if(bot.bdobossesinfo[b].delay > 0){
 					cronarray[1] = cronarray[1] - bot.bdobossesinfo[b].delay % 60;
 					cronarray[2] = cronarray[2] - Math.floor(bot.bdobossesinfo[b].delay / 60);
@@ -220,7 +221,11 @@ bot.on("ready", async () => {
 			Object.keys(bot.bdobossesinfo).forEach(async b => {
 				let nexttimesunfiltered = [];
 				bot.bdobossesinfo[b].times.forEach(t => {
-					let date = CronParser.parseExpression(t.cron,{currentDate: Date.now(),tz: 'Pacific/Auckland'});
+					let cronarray = t.cron.split(' ');
+					//cronarray[2] = parseInt(cronarray[2]) + 1; //+1 for Daylight Savings Time (DST)
+					cronarray[2] = ((parseInt(cronarray[2]) + 2) >= 24) ? 0 : parseInt(cronarray[2]) + 2; //+1 for Daylight Savings Time (DST)
+					cronarray = cronarray.join(' ');
+					let date = CronParser.parseExpression(cronarray,{currentDate: Date.now(),tz: 'Pacific/Auckland'});
 					 nexttimesunfiltered.push(Date.parse(date.next().toString()));
 				});
 				nexttimesunfiltered.sort(function(a,b){
@@ -567,6 +572,7 @@ bot.on("guildMemberRemove", async (member) => {
 		}
 		if(bot.guildSettings[member.guild.id].leavemessage.send){
 			let leavemessage = bot.guildSettings[member.guild.id].leavemessage.message.replace(/{{{user}}}/gi, `${member.user} (*${member.displayName}*)`);
+			console.log(leavemessage)
 			channel.send(`**(${leavetype})** - ${leavemessage}`).then(m => {
 				if(leavetype != "Left") m.react("🇫");
 				m.react("👋");
@@ -653,7 +659,7 @@ bot.on("message", async message => {
     if(index == -1) bot.savedmessages.messages.push({"guildid":message.guild.id,"channelid":message.channel.id,"id":message.id,"timestamp":message.createdTimestamp});
 	}
 	//If the message was sent by another bot, ignore. (But only after adding to the auto-purge list, if required).
-	if(message.author.bot)return;
+	if(message.author.bot) return;
 	//Break the message into an array, remove the first part as command, prepare the remainder to be sent to the command event.
 	let messageArray = message.content.split(" ");
 	let command = messageArray[0];
