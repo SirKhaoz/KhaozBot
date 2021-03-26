@@ -4,8 +4,8 @@ FFmpeg
 backup
 node_modules
 keys.json
-**/bdogear/*.*
-**/emojis/*.*
+**/bdogear/*
+**/emojis/*
 savedmessages.json
 birthdays.json
 authorisedusers.json
